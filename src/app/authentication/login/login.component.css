@@ -1,0 +1,24 @@
+.form-login{
+  width: 500px;
+  margin: auto;
+  padding-top: 150px;
+}
+.example-full-width {
+  width: 100%;
+}
+
+.title-login{
+  text-align: center;
+  color: blue;
+
+}
+
+.content-form{
+  border: 1px solid grey;
+  padding: 70px 20px;
+}
+
+.button-login{
+  text-align: center;
+  padding-top: 50px;
+}
