@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/+state/app.state';
+import { login } from '../+state/authentication.actions';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-
-  constructor() { }
+  loginForm: FormGroup;
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: '',
+      password: '',
+    })
+  }
+  onSubmit(result) {
+    this.store.dispatch(login({
+      email: result.email,
+      password: result.password
+    }));
   }
 
 }
