@@ -1,0 +1,12 @@
+<mat-dialog-content>
+  <div class="content-message">
+    {{data.messageText}}
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="message-button">
+    <button *ngIf="data.showCancelButton" mat-raised-button [mat-dialog-close]="'Cancel'">Cancel</button>
+    <button mat-raised-button class="mat-primary" [mat-dialog-close]="1">OK</button>
+  </div>
+
+</mat-dialog-actions>

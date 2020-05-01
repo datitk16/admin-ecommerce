@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './services/services.component';
 import { IndexComponent } from './index/index.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatMenuModule} from '@angular/material/menu';
 
 const routes: Routes = [
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatTabsModule,
+    MatMenuModule,
 
   ]
 })

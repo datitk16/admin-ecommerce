@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './+state/authentication.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffect } from './+state/authentication.effects';
+
 @NgModule({
   declarations: [LoginComponent],
   imports: [

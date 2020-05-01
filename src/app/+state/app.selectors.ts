@@ -7,4 +7,4 @@ export const selectAuthState = (state: AppState) => state.authState;
 export const selectAuthenticationState = createSelector(
   selectAuthState,
   (state: AuthenticationState) => state
-);s
+);

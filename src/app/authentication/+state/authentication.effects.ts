@@ -1,12 +1,10 @@
-import { login, loginFailed, authenticated } from './authentication.actions';
+import { login, loginFailed, authenticated, logout } from './authentication.actions';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UserService } from 'src/app/core/services/user.service';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/+state/app.state';
-import { mergeMap, switchMap, tap } from 'rxjs/operators';
+import { mergeMap, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { of } from 'rxjs';
 
 @Injectable()
 export class AuthenticationEffect {
@@ -15,7 +13,7 @@ export class AuthenticationEffect {
     ofType(login),
     mergeMap(({ email, password }) => this.userService.login(email, password)),
     switchMap(result => {
-      this.userService.setUser(result);
+      this.userService.setAuth(result);
       if (result !== null) {
         return [
           authenticated()
@@ -45,11 +43,19 @@ export class AuthenticationEffect {
     { dispatch: false }
   );
 
+  logout$ = createEffect(() => this.actions$.pipe(
+    ofType(logout),
+    throttleTime(1000),
+    switchMap(({ showMessage }) => {
+      this.userService.logout(showMessage);
+      return of(null);
+    })
+  ), { dispatch: false })
+
   constructor(
     private userService: UserService,
     private actions$: Actions,
-    private store: Store<AppState>,
     private router: Router,
-    private cookieService: CookieService
   ) { }
 }
+
