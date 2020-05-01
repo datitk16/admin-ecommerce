@@ -3,6 +3,7 @@ import { DialogMessageService } from 'src/app/core/services/dialog-message.servi
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/+state/app.state';
 import { logout } from 'src/app/authentication/+state/authentication.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialogMessageService: DialogMessageService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    this.router.navigateByUrl('/login');
   }
 
   logOut() {

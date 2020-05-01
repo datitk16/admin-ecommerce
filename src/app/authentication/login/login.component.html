@@ -1,20 +1,48 @@
-<form class="form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-  <div class="content-form">
-    <div class="title-login">
-      <h4>Đăng nhập</h4>
-    </div>
-    <mat-form-field class="example-full-width">
-      <mat-label>Tài khoản</mat-label>
-      <input matInput formControlName="email" placeholder="Tài khoản của bạn ?" value="" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width mt-2">
-      <mat-label>Mật khẩu</mat-label>
-      <input matInput formControlName="password" placeholder="Mật khẩu của bạn" value="" required>
-    </mat-form-field>
-    <div class="button-login">
-      <button mat-flat-button type="submit" color="primary" [disabled]="!loginForm.valid">Đăng nhập</button>
-      <button mat-flat-button color="warn" class="ml-2">Hủy</button>
+ <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 mx-auto">
+        <div id="first">
+          <div class="myform form ">
+            <div class="logo mb-3">
+              <div class="col-md-12 text-center">
+                <h1>Login</h1>
+              </div>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Tài khoản email</label>
+                <input type="email" class="form-control"  formControlName="email" aria-describedby="emailHelp"
+                  placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Mật khẩu</label>
+                <input type="text" formControlName="password" class="form-control" aria-describedby="emailHelp"
+                  placeholder="Enter Password">
+              </div>
+              <div class="col-md-12 text-center ">
+                <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Đăng nhập</button>
+              </div>
+              <div class="col-md-12 ">
+                <div class="login-or">
+                  <hr class="hr-or">
+                  <span class="span-or">or</span>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <p class="text-center">
+                  <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus">
+                    </i> Đăng nhập bằng Google
+                  </a>
+                </p>
+              </div>
+              <div class="form-group">
+                <p class="text-center">Bạn chưa có tài khoản? <a href="#" id="signup">Đăng ký ở đây</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-</form>
+</body>

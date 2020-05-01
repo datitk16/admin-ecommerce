@@ -4,7 +4,7 @@
       <a href="index.html"><span>Re</span>sale</a>
     </div>
     <div class="header-right ">
-      <button mat-button [matMenuTriggerFor]="menu" class="menu">Đăng nhập</button>
+      <button mat-button [matMenuTriggerFor]="menu" class="menu" (click)="login()">Đăng nhập</button>
       <mat-menu #menu="matMenu" >
         <button mat-menu-item active="false" (click)="logOut()">Đăng xuất</button>
       </mat-menu>
