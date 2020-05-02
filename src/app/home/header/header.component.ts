@@ -22,9 +22,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-     this.userService.getAuth().pipe(untilDestroyed(this)).subscribe(res=>{
-       console.log(res);
-     })
+    //  this.userService.getAuth().pipe(untilDestroyed(this)).subscribe(res=>{
+    //    console.log(res);
+    //  })
 
   }
 

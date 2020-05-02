@@ -5,7 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './services/services.component';
-import { IndexComponent } from './index/index.component';
+import { IndexComponent } from './home-body/index.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { SortsComponent } from './services/sorts/sorts.component';
@@ -16,7 +16,10 @@ import { SortCategoryComponent } from './services/sort-category/sort-category.co
 import { SearchProductComponent } from './services/search-product/search-product.component';
 import {MatCardModule} from '@angular/material/card';
 import { MainCategoriesComponent } from './main-categories/main-categories.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 const routes: Routes = [
   {
     path: '',
@@ -29,6 +32,10 @@ const routes: Routes = [
       {
         path: 'service',
         component: ServicesComponent
+      },
+      {
+        path: 'categories',
+        component: MainCategoriesComponent
       }
     ]
   }
@@ -53,7 +60,11 @@ const routes: Routes = [
     MatMenuModule,
     NgSelectModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonModule
 
   ]
 })
