@@ -27,7 +27,6 @@ export class UserService {
   setAuth(auth: Auth) {
     this.cookieService.set(this.cookiesUserKey, JSON.stringify(auth));
     this._token = auth.token;
-    const decodeToken = this.jwtHelper.decodeToken(this._token);
   }
 
   getAuth() {

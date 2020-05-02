@@ -13,12 +13,10 @@ export class AuthenticationEffect {
     ofType(login),
     mergeMap(({ email, password }) => this.userService.login(email, password)),
     switchMap(result => {
-      this.userService.setAuth(result);
-      if (result !== null) {
-        return [
-          authenticated()
-        ]
-      } else {
+      if (result.token) {
+        return [authenticated()]
+      }
+      else{
         return [loginFailed()];
       }
     })

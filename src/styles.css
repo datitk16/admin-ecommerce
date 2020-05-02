@@ -5,6 +5,12 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 /**
  * Custom cross-browser styles for keyboard :focus overrides defaults.

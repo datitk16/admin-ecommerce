@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/+state/app.state';
 import { logout } from 'src/app/authentication/+state/authentication.actions';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/core/services/user.service';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +17,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private dialogMessageService: DialogMessageService,
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
+     this.userService.getAuth().pipe(untilDestroyed(this)).subscribe(res=>{
+       console.log(res);
+     })
+
   }
 
   login(){

@@ -1,0 +1,6 @@
+<ng-select [items]="people$ | async"
+           bindLabel="name"
+           bindValue="id"
+           [editableSearchTerm]="true"
+           [(ngModel)]="selectedPersonId">
+</ng-select>
