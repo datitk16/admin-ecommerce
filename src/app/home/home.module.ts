@@ -4,22 +4,24 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ServicesComponent } from './services/services.component';
+import { ServicesComponent } from './products-list/products-list.component';
 import { IndexComponent } from './home-body/index.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
-import { SortsComponent } from './services/sorts/sorts.component';
+import { SortsComponent } from './products-list/sorts/sorts.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { SortLocaltionComponent } from './services/sort-localtion/sort-localtion.component';
-import { SortCategoryComponent } from './services/sort-category/sort-category.component';
-import { SearchProductComponent } from './services/search-product/search-product.component';
+import { SortLocaltionComponent } from './products-list/sort-localtion/sort-localtion.component';
+import { SortCategoryComponent } from './products-list/sort-category/sort-category.component';
+import { SearchProductComponent } from './products-list/search-product/search-product.component';
 import {MatCardModule} from '@angular/material/card';
 import { MainCategoriesComponent } from './main-categories/main-categories.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 const routes: Routes = [
   {
     path: '',
@@ -64,7 +66,7 @@ const routes: Routes = [
     MatPaginatorModule,
     MatTreeModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
 
   ]
 })

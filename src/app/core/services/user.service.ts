@@ -37,6 +37,11 @@ export class UserService {
     return this.http.post<Auth>(this.loginUrl, { email, password });
   }
 
+  get getToken(){
+    console.log(this.getAuth())
+    return this._token ? this._token : this.getAuth().token;
+  }
+
   logout(showMessage = false): void {
     this._token = undefined;
     this.dialogRef.closeAll();

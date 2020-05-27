@@ -1,122 +1,12 @@
 <div class="content">
   <div class="categories">
     <div class="container row">
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html">
+      <div class="col-md-2 focus-grid" *ngFor="let item of categoriesLevel1">
+        <a href="/service">
           <div class="focus-border">
             <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-mobile"></i></div>
-              <h4 class="clrchg">Điện thoại</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab2">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-laptop"></i></div>
-              <h4 class="clrchg"> Điện tử & Thiết bị</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab3">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-car"></i></div>
-              <h4 class="clrchg">Ô tô</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab4">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-motorcycle"></i></div>
-              <h4 class="clrchg">Xe máy</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab5">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-wheelchair"></i></div>
-              <h4 class="clrchg">Nội thất</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab6">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-paw"></i></div>
-              <h4 class="clrchg">Thú cưng</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab7">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-book"></i></div>
-              <h4 class="clrchg">Sách, Thể thao & Nội thất</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab8">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-asterisk"></i></div>
-              <h4 class="clrchg">Thời trang</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab9">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-gamepad"></i></div>
-              <h4 class="clrchg">Trẻ em</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab10">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-shield"></i></div>
-              <h4 class="clrchg">Dịch vụ</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab11">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-at"></i></div>
-              <h4 class="clrchg">Công việc</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-2 focus-grid">
-        <a href="categories.html#parentVerticalTab12">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class="fa fa-home"></i></div>
-              <h4 class="clrchg">Bất động sản</h4>
+              <div class="focus-image"><i class={{item.icon}}></i></div>
+              <h4 class="clrchg">{{item.name}}</h4>
             </div>
           </div>
         </a>
