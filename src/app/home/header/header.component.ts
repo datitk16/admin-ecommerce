@@ -6,6 +6,7 @@ import { logout } from 'src/app/authentication/+state/authentication.actions';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  account: User;
   constructor(
     private dialogMessageService: DialogMessageService,
     private store: Store<AppState>,
@@ -22,13 +24,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    //  this.userService.getAuth().pipe(untilDestroyed(this)).subscribe(res=>{
-    //    console.log(res);
-    //  })
-
+    this.account = this.userService.getAuth().user;
   }
 
-  login(){
+  login() {
     this.router.navigateByUrl('/login');
   }
 
@@ -37,6 +36,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.store.dispatch(logout({}));
     })
   }
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
 }

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="categoriesLevel1;else spinner">
   <div class="categories">
     <div class="container row">
       <div class="col-md-2 focus-grid" *ngFor="let item of categoriesLevel1">
@@ -22,7 +22,9 @@
       </div>
       <div class="col-md-7 app-right">
         <h3>Resale App is the <span>Easiest</span> way for Selling and buying second-hand goods</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor Sed bibendum varius euismod. Integer eget turpis sit amet lorem rutrum ullamcorper sed sed dui. vestibulum odio at elementum. Suspendisse et condimentum nibh.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor Sed bibendum varius euismod. Integer
+          eget turpis sit amet lorem rutrum ullamcorper sed sed dui. vestibulum odio at elementum. Suspendisse et
+          condimentum nibh.</p>
         <div class="app-buttons">
           <div class="app-button">
             <a href="#"><img src="images/1.png" alt=""></a>
@@ -37,3 +39,9 @@
     </div>
   </div>
 </div>
+<ng-template #spinner>
+  <div class="spinner-wrapper">
+    <ngx-spinner type="ball-fussion" bdColor="rgba(0,0,0,0)" color="rgb(22, 193, 243)" [fullScreen]="false">
+    </ngx-spinner>
+  </div>
+</ng-template>

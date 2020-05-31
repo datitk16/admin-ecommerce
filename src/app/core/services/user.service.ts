@@ -38,7 +38,6 @@ export class UserService {
   }
 
   get getToken(){
-    console.log(this.getAuth())
     return this._token ? this._token : this.getAuth().token;
   }
 

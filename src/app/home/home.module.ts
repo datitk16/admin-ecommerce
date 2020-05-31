@@ -5,23 +5,23 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './products-list/products-list.component';
-import { IndexComponent } from './home-body/index.component';
+import { IndexComponent } from './home-body/home-body.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { SortsComponent } from './products-list/sorts/sorts.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { SortLocaltionComponent } from './products-list/sort-localtion/sort-localtion.component';
-import { SortCategoryComponent } from './products-list/sort-category/sort-category.component';
+import { SortLocationComponent } from './products-list/sort-location/sort-location.component';
 import { SearchProductComponent } from './products-list/search-product/search-product.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MainCategoriesComponent } from './main-categories/main-categories.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatInputModule } from '@angular/material/input';
+
 const routes: Routes = [
   {
     path: '',
@@ -51,8 +51,7 @@ const routes: Routes = [
     ServicesComponent,
     IndexComponent,
     SortsComponent,
-    SortLocaltionComponent,
-    SortCategoryComponent,
+    SortLocationComponent,
     SearchProductComponent,
     MainCategoriesComponent],
   imports: [
@@ -67,6 +66,8 @@ const routes: Routes = [
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
+    NgxSpinnerModule,
+    MatInputModule
 
   ]
 })

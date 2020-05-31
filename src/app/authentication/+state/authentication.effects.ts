@@ -14,7 +14,8 @@ export class AuthenticationEffect {
     mergeMap(({ email, password }) => this.userService.login(email, password)),
     switchMap(result => {
       if (result.token) {
-        return [authenticated()]
+        this.userService.setAuth(result);
+        return [authenticated()];
       }
       else{
         return [loginFailed()];

@@ -20,10 +20,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.loginForm = this.fb.group({
       email: '',
       password: '',
-    })
+    });
+
+
+
   }
   onSubmit(result) {
     this.store.dispatch(login({

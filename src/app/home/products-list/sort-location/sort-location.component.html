@@ -1,0 +1,5 @@
+<ng-select [items]="location" bindLabel="Title" placeholder="Chọn địa chỉ"   [editableSearchTerm]="true" appendTo="body" >
+  <ng-template ng-option-tmp let-item="item" let-index="index">
+    <b (click)="selectedCity(item)">{{item.Title}}</b>
+  </ng-template>
+</ng-select>
