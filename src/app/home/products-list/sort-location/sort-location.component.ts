@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { CatalogService } from '../../services/catalog.service';
-import { Address } from '../../models/address';
+import { Address } from '../../models/address.model';
 
 @Component({
   selector: 'app-sort-localtion',

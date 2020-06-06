@@ -4,9 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
+  //login before
+  // {
+  //   path: '',
+  //   canActivate: [AuthGuard],
+  //   loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  // },
   {
     path: '',
-    canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {

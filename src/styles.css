@@ -12,7 +12,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
-
+.mat-tab-body .mat-tab-body-active{
+  overflow:hidden !important;
+}
 /**
  * Custom cross-browser styles for keyboard :focus overrides defaults.
  */
@@ -2586,10 +2588,6 @@ h2.sear-head.fer {
  * Demo Styles
  */
 
-.wrapper {
-  padding: 15px 0;
-}
-
 .bs-example-tabs .nav-tabs {
   margin-bottom: 15px;
 }
@@ -2623,7 +2621,6 @@ h2.sear-head.fer {
     padding-left: 40px;
 }
 div#myTabContent {
-    border: 1px solid #CCCCCC !important;
     padding: 15px;
 	    position: relative;
 }

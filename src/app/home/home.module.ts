@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
     SortsComponent,
     SortLocationComponent,
     SearchProductComponent,
-    MainCategoriesComponent],
+    MainCategoriesComponent,
+    PaginatorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
