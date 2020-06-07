@@ -8,6 +8,7 @@ import { CategoriesLevel1 } from '../models/catalog-category-level1.models';
 import { CityParents } from '../models/city-parent.model';
 import { Wards } from '../models/ward.models';
 import { Paginator } from '../models/paginator.model';
+import { AllProduct } from '../models/all-product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,11 @@ export class CatalogService {
     return this.httpClient.post<Wards[]>('https://kltn-resales.herokuapp.com/api/address/ward', { cityID: request });
   }
 
-  getProductList(): Observable<Products[]> {
-    return this.httpClient.get<Products[]>(Constants.BASE_API_URL + 'products');
+  getAllProductByCategoriesLevel1(request: AllProduct): Observable<Products[]> {
+    return this.httpClient.post<Products[]>(Constants.BASE_API_URL + 'products/all', request);
   }
 
-  getProductByPaginator(request:Paginator): Observable<Products[]> {
+  getProductByPaginator(request: Paginator): Observable<Products[]> {
     return this.httpClient.post<Products[]>(Constants.BASE_API_URL + 'products/pagination', request);
   }
 

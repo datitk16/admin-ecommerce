@@ -33,11 +33,11 @@ const routes: Routes = [
         component: IndexComponent,
       },
       {
-        path: 'service',
+        path: 'all-product',
         component: ServicesComponent
       },
       {
-        path: 'categories',
+        path: 'product',
         component: MainCategoriesComponent
       }
     ]

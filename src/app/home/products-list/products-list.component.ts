@@ -16,7 +16,6 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   products: Products[] = [];
   image: string;
-  productItem = [];
   request = new Paginator();
   constructor(
     private catalogService: CatalogService,
@@ -25,30 +24,15 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.spinner.show();
-    this.request.pageNumber = 1;
-    this.request.pageSize = 10;
-    this.catalogService.getProductByPaginator(this.request).pipe(untilDestroyed(this)).subscribe(products => {
-      this.products = products;
-      if (this.products) {
-        // tslint:disable-next-line: no-shadowed-variable
-        this.products.map((products, index) => {
-          this.image = `https://kltn-resales.herokuapp.com/${products.image[0]}`;
-          this.productItem.push({ product: products, image: products.image[0] ? this.image : '' });
-        });
-      }
-    });
+    // this.catalogService.getAllProductByCategoriesLevel1().pipe(untilDestroyed(this)).subscribe(products => {
+    //   console.log(products);
+    //   this.products = products;
+    // });
   }
 
   ngOnDestroy(): void { }
 
   public paginatorValue(paginator) {
-    this.request.pageNumber = paginator.pageIndex;
-
-    this.request.pageSize = 6;
-    this.catalogService.getProductByPaginator(this.request).pipe(untilDestroyed(this)).subscribe(products => {
-
-
-    });
 
   }
 

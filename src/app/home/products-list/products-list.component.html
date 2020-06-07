@@ -1,4 +1,4 @@
-<div class="total-ads main-grid-border" *ngIf="this.productItem.length>0">
+<div class="total-ads main-grid-border" *ngIf="products.length>0;else spinner">
   <div class="container">
     <div class="select-box">
       <app-sorts></app-sorts>
@@ -12,7 +12,7 @@
     <div class="ads-grid row">
       <div class="side-bar col-md-3">
         <div class="search-hotel">
-          <h3 class="sear-head">Name contains</h3>
+          <h3 class="sear-head">Tìm kiếm sản phẩm</h3>
           <form>
             <input type="text" value="Product name..." onfocus="this.value = '';"
               onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
@@ -23,7 +23,7 @@
         <div class="range">
           <h3 class="sear-head">Price range</h3>
         </div>
-        <h2 class="sear-head fer">Featured Ads</h2>
+        <h2 class="sear-head fer">Sản phẩm nổi bật</h2>
         <mat-card>
           <div class="row">
             <div class="col-md-6 ">
@@ -32,7 +32,7 @@
             <div class="col-md-6 featured-ad-right">
               <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
               <p>$ 450</p>
-            </div>q
+            </div>
           </div>
         </mat-card>
       </div>
@@ -50,38 +50,30 @@
                     <div class="product-grid__wrapper">
                       <!-- Product list start here -->
                       <!-- Single product -->
-                      <div class="product-grid__product-wrapper" *ngFor="let item of productItem">
+                      <div class="product-grid__product-wrapper" *ngFor="let item of products">
                         <div class="product-grid__product">
                           <div class="product-grid__img-wrapper">
                             <img [src]=item.image class="product-grid__img" />
                           </div>
                           <span class="product-grid__title">
-                            <p>{{item.product.subject}}</p>
+                            <p>{{item.subject}}</p>
                           </span>
-                          <span class="product-grid__price">{{item.product.price}}</span>
+                          <span class="product-grid__price">{{item.price}}</span>
                           <div class="product-grid__extend-wrapper">
                             <div class="product-grid__extend">
-                              <!-- <p class="product-grid__description">{{item.product.body}}</p> -->
+                              <!-- <p class="product-grid__description">{{item.body}}</p> -->
                               <span class="product-grid__btn product-grid__add-to-cart"><i
                                   class="fa fa-cart-arrow-down"></i> Thêm giỏ hàng</span>
-                              <span class="product-grid__btn product-grid__view"><i class="fa fa-eye"></i> Xem</span>
+                              <span class="product-grid__btn product-grid__view"><a href="/product"><i
+                                    class="fa fa-eye"></i> Xem</a> </span>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="paginator">
-                        <app-paginator (emitPaginator)="paginatorValue($event)"></app-paginator>
-                      </div>
                     </div>
-
-                  </div>
-
-
-                  <div>
-
                   </div>
                 </div>
-
+                <app-paginator (emitPaginator)="paginatorValue($event)"></app-paginator>
               </mat-tab>
               <mat-tab label="Xem theo danh sách">Xem theo danh sách</mat-tab>
             </mat-tab-group>

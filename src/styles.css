@@ -15,6 +15,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 .mat-tab-body .mat-tab-body-active{
   overflow:hidden !important;
 }
+
+.ng-dropdown-panel{
+  top: 522.5px !important;
+}
+.ng-select .ng-select-container .ng-value-container .ng-input>input{
+  padding: 10px 0 !important;
+}
+.ng-select .ng-select-container .ng-value-container .ng-placeholder{
+  padding-left: 12px !important;
+}
+
+.mat-ink-bar{
+  background-color:#01a185 !important;
+}
+
 /**
  * Custom cross-browser styles for keyboard :focus overrides defaults.
  */

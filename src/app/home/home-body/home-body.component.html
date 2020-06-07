@@ -2,14 +2,12 @@
   <div class="categories">
     <div class="container row">
       <div class="col-md-2 focus-grid" *ngFor="let item of categoriesLevel1">
-        <a href="/service">
-          <div class="focus-border">
-            <div class="focus-layout">
-              <div class="focus-image"><i class={{item.icon}}></i></div>
-              <h4 class="clrchg">{{item.name}}</h4>
-            </div>
+        <div class="focus-border" (click)="getAllProductItem(item._id)">
+          <div class="focus-layout">
+            <div class="focus-image"><i class={{item.icon}}></i></div>
+            <h4 class="clrchg">{{item.name}}</h4>
           </div>
-        </a>
+        </div>
       </div>
       <div class="clearfix"></div>
     </div>
