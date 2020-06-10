@@ -22,6 +22,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { HomeEffects } from './+state/home.effects';
+import { reducer } from './+state/home.reducer';
 
 const routes: Routes = [
   {
@@ -33,7 +37,7 @@ const routes: Routes = [
         component: IndexComponent,
       },
       {
-        path: 'all-product',
+        path: 'all-product/:id',
         component: ServicesComponent
       },
       {
@@ -69,7 +73,9 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     NgxSpinnerModule,
-    MatInputModule
+    MatInputModule,
+    StoreModule.forFeature('catalog', reducer),
+    EffectsModule.forFeature([HomeEffects])
 
   ]
 })

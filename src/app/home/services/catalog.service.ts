@@ -1,4 +1,4 @@
-import { Products } from './../models/products.model';
+import { ProductItem, Products } from './../models/products.model';
 import { Injectable } from '@angular/core';
 import { AppState } from 'src/app/+state/app.state';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,7 @@ import { CategoriesLevel1 } from '../models/catalog-category-level1.models';
 import { CityParents } from '../models/city-parent.model';
 import { Wards } from '../models/ward.models';
 import { Paginator } from '../models/paginator.model';
-import { AllProduct } from '../models/all-product.model';
+import { ProductRequest } from '../models/product-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +31,13 @@ export class CatalogService {
     return this.httpClient.post<Wards[]>('https://kltn-resales.herokuapp.com/api/address/ward', { cityID: request });
   }
 
-  getAllProductByCategoriesLevel1(request: AllProduct): Observable<Products[]> {
-    return this.httpClient.post<Products[]>(Constants.BASE_API_URL + 'products/all', request);
+  getAllProductByCategoriesLevel1(request: ProductRequest): Observable<Products> {
+    console.log(request)
+    return this.httpClient.post<Products>(Constants.BASE_API_URL + 'products/all', request);
   }
 
-  getProductByPaginator(request: Paginator): Observable<Products[]> {
-    return this.httpClient.post<Products[]>(Constants.BASE_API_URL + 'products/pagination', request);
+  getProductByPaginator(request: Paginator): Observable<ProductItem[]> {
+    return this.httpClient.post<ProductItem[]>(Constants.BASE_API_URL + 'products/pagination', request);
   }
 
 }

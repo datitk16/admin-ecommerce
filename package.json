@@ -26,6 +26,7 @@
     "@ng-select/ng-select": "^4.0.0",
     "@ngrx/effects": "^9.1.0",
     "@ngrx/store": "^9.1.0",
+    "class-transformer": "^0.2.3",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "ngx-cookie-service": "^3.0.4",
