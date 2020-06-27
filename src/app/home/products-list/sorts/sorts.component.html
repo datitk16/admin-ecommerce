@@ -1,14 +1,18 @@
-<div class="row">
-  <div class="col-md-4">
-    <app-sort-localtion
-    [location]="cities"
-    (sendCity)="selectedCity($event)"
-    ></app-sort-localtion>
+<div class="row row-sort d-flex">
+  <div class="col-md-3">
+    <app-sort-localtion [location]="cities" (sendCity)="selectedCity($event)"></app-sort-localtion>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <app-sort-localtion [location]="wards"></app-sort-localtion>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <app-search-product></app-search-product>
+  </div>
+  <div class="col-md-3 d-flex">
+    <button class="button-sort">
+      <span class="material-icons">
+        search
+      </span>
+    </button>
   </div>
 </div>

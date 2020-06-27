@@ -48,32 +48,49 @@
                   <div class="content">
                     <!-- content here -->
                     <div class="product-grid__wrapper">
-                      <!-- Product list start here -->
-                      <!-- Single product -->
                       <div class="product-grid__product-wrapper" *ngFor="let item of products">
-                        <div class="product-grid__product">
-                          <div class="product-grid__img-wrapper">
+                        <!-- <div  style="height:300px" class="product-grid__product">
+                          <div class="product-grid__img-wrapper" style="height: 200px; overflow: hidden;">
                             <img [src]=item.image class="product-grid__img" />
                           </div>
-                          <span class="product-grid__title">
+                          <span class="product-grid__title" style="height:30px;overflow: hidden;">
                             <p>{{item.subject}}</p>
                           </span>
-                          <span class="product-grid__price">{{item.price}}</span>
-                          <div class="product-grid__extend-wrapper">
+                          <span class="product-grid__price" style="height:20px">{{item.price}}</span>
+                          <div class="product-grid__extend-wrapper" style="height:50px">
                             <div class="product-grid__extend">
-                              <!-- <p class="product-grid__description">{{item.body}}</p> -->
                               <span class="product-grid__btn product-grid__add-to-cart"><i
                                   class="fa fa-cart-arrow-down"></i> Thêm giỏ hàng</span>
-                              <span class="product-grid__btn product-grid__view"><a href="/product"><i
-                                    class="fa fa-eye"></i> Xem</a> </span>
+                              <span class="product-grid__btn product-grid__view" (click)="viewDetail(item._id)"><i
+                                  class="fa fa-eye"></i> Xem </span>
                             </div>
                           </div>
+                        </div> -->
+                        <div id="login-container">
+                          <div class="profile-img"></div>
+                          <img style="width: 100%; height:150px" [src]=item.image class="product-grid__img" />
+                          <div class="description">
+                            <p>{{item.subject}}</p>
+                          </div>
+                          <div class="social">
+                            {{item.price}}
+                          </div>
+                          <button (click)="viewDetail(item._id)">Xem sản phẩm</button>
+                          <footer>
+                            <div class="likes">
+                              <p class="like-product"> <i class='fa fa-heart'></i></p>
+                              <p>1.5K</p>
+                            </div>
+                            <div class="projects">
+                              <p>Projects</p>
+                              <p>154</p>
+                            </div>
+                          </footer>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <app-paginator (emitPaginator)="paginatorValue($event)"></app-paginator>
               </mat-tab>
               <mat-tab label="Xem theo danh sách">Xem theo danh sách</mat-tab>
             </mat-tab-group>
@@ -82,6 +99,7 @@
       </div>
       <div class="clearfix"></div>
     </div>
+    <app-paginator (emitPaginator)="paginatorValue($event)"></app-paginator>
   </div>
 </div>
 

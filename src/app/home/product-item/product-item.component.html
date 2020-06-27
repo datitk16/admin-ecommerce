@@ -1,4 +1,4 @@
-<div class="single-page main-grid-border">
+<div class="single-page main-grid-border" *ngIf="product else spinner">
   <div class="container">
     <ol class="breadcrumb" style="margin-bottom: 5px;">
       <li><a href="index.html">Home</a></li>
@@ -8,7 +8,7 @@
     </ol>
     <div class="product-desc row">
       <div class="col-md-7 product-view">
-        <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h2>
+        <h2>{{product.subject}}</h2>
         <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at 06:55 pm, Ad ID: 987654321</p>
         <div class="flexslider">
           <ul class="slides">
@@ -31,7 +31,7 @@
         <div class="item-price">
           <div class="product-price">
             <p class="p-price">Price</p>
-            <h3 class="rate">$ 259</h3>
+            <h3 class="rate">{{product.price}}</h3>
             <div class="clearfix"></div>
           </div>
           <div class="condition">
@@ -68,3 +68,10 @@
     </div>
   </div>
 </div>
+
+<ng-template #spinner>
+  <div class="spinner-wrapper">
+    <ngx-spinner type="ball-fussion" bdColor="rgba(0,0,0,0)" color="rgb(22, 193, 243)" [fullScreen]="false">
+    </ngx-spinner>
+  </div>
+</ng-template>

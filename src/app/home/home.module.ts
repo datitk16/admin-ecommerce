@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SortLocationComponent } from './products-list/sort-location/sort-location.component';
 import { SearchProductComponent } from './products-list/search-product/search-product.component';
 import { MatCardModule } from '@angular/material/card';
-import { MainCategoriesComponent } from './main-categories/main-categories.component';
+import { MainCategoriesComponent } from './product-item/product-item.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './+state/home.effects';
 import { reducer } from './+state/home.reducer';
+import { EmptyMessageComponent } from './empty-message/empty-message.component';
 
 const routes: Routes = [
   {
@@ -37,13 +38,13 @@ const routes: Routes = [
         component: IndexComponent,
       },
       {
-        path: 'all-product/:id',
+        path: 'products',
         component: ServicesComponent
       },
       {
-        path: 'product',
+        path: 'products/detail',
         component: MainCategoriesComponent
-      }
+      },
     ]
   }
 ];
@@ -59,7 +60,8 @@ const routes: Routes = [
     SortLocationComponent,
     SearchProductComponent,
     MainCategoriesComponent,
-    PaginatorComponent],
+    PaginatorComponent,
+    EmptyMessageComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

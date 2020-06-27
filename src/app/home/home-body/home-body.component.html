@@ -1,4 +1,4 @@
-<div class="content" *ngIf="categoriesLevel1;else spinner">
+<div class="content" *ngIf="categoriesLevel1.length>0;else spinner">
   <div class="categories">
     <div class="container row">
       <div class="col-md-2 focus-grid" *ngFor="let item of categoriesLevel1">

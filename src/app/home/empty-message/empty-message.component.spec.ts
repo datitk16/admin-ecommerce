@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainCategoriesComponent } from './main-categories.component';
+import { EmptyMessageComponent } from './empty-message.component';
 
-describe('MainCategoriesComponent', () => {
-  let component: MainCategoriesComponent;
-  let fixture: ComponentFixture<MainCategoriesComponent>;
+describe('EmptyMessageComponent', () => {
+  let component: EmptyMessageComponent;
+  let fixture: ComponentFixture<EmptyMessageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainCategoriesComponent ]
+      declarations: [ EmptyMessageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainCategoriesComponent);
+    fixture = TestBed.createComponent(EmptyMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

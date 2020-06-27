@@ -30,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   background-color:#01a185 !important;
 }
 
-/**
+/*
  * Custom cross-browser styles for keyboard :focus overrides defaults.
  */
  *:focus {

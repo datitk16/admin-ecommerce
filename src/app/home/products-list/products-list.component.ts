@@ -5,11 +5,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Paginator } from '../models/paginator.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/+state/app.state';
-import { selectProducts } from '../+state/home.selectors';
-import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../services/catalog.service';
 import { ProductRequest } from '../models/product-request.model';
+import { paramsRouterSelected } from '../+state/home.actions';
 
 @Component({
   selector: 'app-services',
@@ -25,27 +24,21 @@ export class ServicesComponent implements OnInit, OnDestroy {
     private spinner: NgxSpinnerService,
     private store: Store<AppState>,
     private router: Router,
-    private activeRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService
   ) { }
 
   ngOnInit(): void {
     this.spinner.show();
-    // this.store.select(selectProducts).pipe(untilDestroyed(this)).subscribe(products => {
-    //   if (products !== undefined && products) {
-    //     this.products = products.items;
-    //   }
-    // });
-
-    this.activeRoute.params.subscribe(routeParams => {
-      this.request.category_id = routeParams.id;
+    this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
+      this.request.category_id = params.cateId;
       this.catalogService.getAllProductByCategoriesLevel1(this.request).pipe(untilDestroyed(this)).subscribe(products => {
-        console.log(products)
         if (products !== undefined && products) {
           this.products = products.items;
         }
       });
     });
+
   }
 
   ngOnDestroy(): void { }
@@ -54,4 +47,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   }
 
+  viewDetail(productId) {
+    this.router.navigate(['/products/detail'], { queryParams: { productId: productId }, relativeTo: this.activatedRoute },);
+  }
 }

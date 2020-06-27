@@ -33,7 +33,7 @@ export class HomeEffects {
 
   private navigationRouter(catId, page, search) {
 
-    this.router.navigate([], {
+    this.router.navigate(['/produc'], {
       relativeTo: this.activatedRoute,
       queryParams: {
         catId: catId ? catId : 0,
