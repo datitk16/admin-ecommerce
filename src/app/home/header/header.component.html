@@ -8,32 +8,25 @@
 
     </div>
     <div *ngIf="account" class="header-right ">
-      <div class="icon">
+
+      <button class="account_name d-flex" (click)='showOption()'>
+        Hi, {{account.fullName}}
         <span class="material-icons">
-          supervisor_account
+          keyboard_arrow_down
         </span>
+      </button>
+
+      <div class="container-cart" *ngIf="showBox">
+        <div class="shopping-cart">
+          <ul class="shopping-cart-items mat-typography">
+            <li>Sản phẩm đã xem</li>
+            <li>Tài khoản của tôi</li>
+            <li>Sản phẩm yêu thích</li>
+            <li  (click)="logOut()">Thoát tài khoản</li>
+          </ul>
+          <!-- <button  (click)="logOut()" class="button">Đăng xuất</button> -->
+        </div>
       </div>
-      <div class="account_name">
-        <p> Hi, {{account.fullName}}</p>
-      </div>
-      <!-- <div class="user_history">
-        <div class="item_history">
-          <a>Thông báo của tôi</a>
-        </div>
-        <div class="item_history">
-          <a>Tài khoản của tôi</a>
-        </div>
-        <div class="item_history">
-          <a>Nhận xét sản phẩm đã mua</a>
-        </div>
-        <div class="item_history">
-          <a>Sản phẩm đã xem</a>
-        </div>
-        <div class="item_history">
-          <a>Thoát tài khoản</a>
-       </div>
-      </div> -->
-      <button class="button-logout" mat-menu-item active="false" (click)="logOut()">Đăng xuất</button>
     </div>
   </div>
 </div>

@@ -16,6 +16,7 @@ import { User } from 'src/app/shared/models/user.model';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   account: User;
+  showBox = false;
   constructor(
     private dialogMessageService: DialogMessageService,
     private store: Store<AppState>,
@@ -37,5 +38,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     })
   }
   ngOnDestroy() { }
+  showOption() {
+    this.showBox = !this.showBox;
+  }
+
+
 
 }

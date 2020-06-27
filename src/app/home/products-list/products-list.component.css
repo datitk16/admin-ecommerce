@@ -325,3 +325,7 @@ display:block;
 .like-product{
   cursor: pointer;
 }
+
+.breadcrumb li a{
+  color: gray;
+}

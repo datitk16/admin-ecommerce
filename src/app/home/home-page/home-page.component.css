@@ -19,6 +19,21 @@ input[type=text], select {
   float: left;
 }
 
+.search input[type="text"] {
+  padding: 10px 10px 10px 10px;
+  width: 80%;
+  margin-bottom: 25px;
+  border: 1px solid #01a185;
+  outline: none;
+  color: #555;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+float: left;
+}
+
 .button {
   background-color: #4CAF50;
   border: none;
@@ -28,6 +43,39 @@ input[type=text], select {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 8px 2px;
+  margin: 8px 0;
   cursor: pointer;
+}
+
+.cd-top--is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cd-top--fade-out {
+  opacity: .5;
+}
+
+ /* to top */
+.top-btn {
+  width: 50px;
+  height: 50px;
+  background: #f3c500;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 50px;
+  z-index: 999;
+  transition: .5s;
+ opacity: 0.8;
+
+}
+
+.top-btn:hover {
+  opacity: 1;
 }

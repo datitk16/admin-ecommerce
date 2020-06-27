@@ -15,7 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-
+/* gallery */
 
 #basic-test{
   width:500px;
@@ -32,6 +32,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 }
 
 
+
+/*  */
+
+
+
+
+.w3layouts-partners ul li{
+	display:inline-block;
+  	width:19.5%;
+  	margin: 20px auto;
+}
+.w3layouts-partners {
+	padding: 70px 0;
+    background-color: #F7F7F7;
+}
+.w3layouts-partners h3{
+	color: #0099e5;
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.w3layouts-partners h3:after,.w3layouts-partners h3:before{
+	width: 170px;
+	height: 1px;
+	display: inline-block;
+	vertical-align: middle;
+	content:"";
+	background:#000;
+	margin: 0 1%;
+}
+.w3layouts-partners ul{
+	width:75%;
+	margin: 16px auto 0;
+}
+.w3layouts-partners ul li a img{
+	margin: 0 auto;
+}
 
 
 .mat-tab-body .mat-tab-body-active{
@@ -2309,7 +2346,6 @@ h3.rate {
 }
 .select-box {
     background: rgba(1, 161, 133, 0.39);
-    padding: 30px 30px;
     margin: 40px 0;
     border-radius: 6px;
     -webkit-border-radius: 6px;

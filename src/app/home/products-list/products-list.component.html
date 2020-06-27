@@ -4,9 +4,24 @@
       <app-sorts></app-sorts>
       <div class="clearfix"></div>
     </div>
+    <div class="all-categories">
+      <h3> Chọn danh mục bạn tìm</h3>
+      <ul class="all-cat-list">
+        <li><a href="mobiles.html">Điện thoại <span class="num-of-ads">(5,78,076)</span></a></li>
+        <li><a href="electronics-appliances.html">Điện tử & Thiết bị  <span class="num-of-ads">(3,66,495)</span></a></li>
+        <li><a href="real-estate.html">Bất động sản  <span class="num-of-ads">(45,450)</span></a></li>
+        <li><a href="furnitures.html">Đồ nội thất    <span class="num-of-ads">(1,77,145)</span></a></li>
+        <li><a href="pets.html">Thú cưng   <span class="num-of-ads">(1,81,250)</span></a></li>
+        <li><a href="books-sports-hobbies.html">Sách & Thể thao   <span class="num-of-ads">(66,822)</span></a></li>
+        <li><a href="fashion.html">Thời trang   <span class="num-of-ads">(29,156)</span></a></li>
+        <li><a href="kids.html">Trẻ em   <span class="num-of-ads">(25,699)</span></a></li>
+        <li><a href="services.html">Dịch vụ   <span class="num-of-ads">(2,15,895)</span></a></li>
+        <li><a href="cars.html">Ô tô   <span class="num-of-ads">(2,15,306)</span></a></li>
+      </ul>
+    </div>
     <ol class="breadcrumb" style="margin-bottom: 5px;">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="categories.html">Categories</a></li>
+      <li><a href="index.html">Home / </a></li>
+      <li><a href="categories.html"> Categories / </a></li>
       <li class="active">Services</li>
     </ol>
     <div class="ads-grid row">
@@ -67,7 +82,6 @@
                           </div>
                         </div> -->
                         <div id="login-container">
-                          <div class="profile-img"></div>
                           <img style="width: 100%; height:150px" [src]=item.image class="product-grid__img" />
                           <div class="description">
                             <p>{{item.subject}}</p>
