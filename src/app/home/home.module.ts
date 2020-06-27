@@ -27,6 +27,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './+state/home.effects';
 import { reducer } from './+state/home.reducer';
 import { EmptyMessageComponent } from './empty-message/empty-message.component';
+import { GalleryModule } from 'ng-gallery';
+import { LightboxModule } from 'ng-gallery/lightbox';
 
 const routes: Routes = [
   {
@@ -77,7 +79,9 @@ const routes: Routes = [
     NgxSpinnerModule,
     MatInputModule,
     StoreModule.forFeature('catalog', reducer),
-    EffectsModule.forFeature([HomeEffects])
+    EffectsModule.forFeature([HomeEffects]),
+    GalleryModule,
+    LightboxModule
 
   ]
 })
