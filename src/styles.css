@@ -11,6 +11,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 @import "~@ng-select/ng-select/themes/material.theme.css";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+
+
+
+#basic-test{
+  width:500px;
+  position: absolute !important;
+  right:0 !important;
+  transform:none ;
+  left: 0;
+}
+
+.gallery-container{
+  position: relative !important;
+  width: 500px;
+  height: 500px;
+}
+
+
+
 
 .mat-tab-body .mat-tab-body-active{
   overflow:hidden !important;
