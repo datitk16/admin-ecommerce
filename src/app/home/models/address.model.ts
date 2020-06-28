@@ -1,4 +1,5 @@
 export interface Address {
+  ID:number;
   Type: number;
   SolrID: string;
   Title: string;

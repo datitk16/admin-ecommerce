@@ -10,7 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { SortsComponent } from './products-list/sorts/sorts.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortLocationComponent } from './products-list/sort-location/sort-location.component';
 import { SearchProductComponent } from './products-list/search-product/search-product.component';
 import { MatCardModule } from '@angular/material/card';
@@ -81,8 +81,8 @@ const routes: Routes = [
     StoreModule.forFeature('catalog', reducer),
     EffectsModule.forFeature([HomeEffects]),
     GalleryModule,
-    LightboxModule
-
+    LightboxModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

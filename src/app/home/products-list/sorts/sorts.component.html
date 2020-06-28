@@ -18,55 +18,31 @@
 </div> -->
 
 <div class="post-ad-form">
-  <form>
+  <form [formGroup]="selectAddressForm" (ngSubmit)="submitFormAddress(selectAddressForm.value)">
     <div class="row">
       <div class="col-md-3">
-        <select class="selected-city">
-          <option>Chọn Tỉnh/TP</option>
-          <option>Mobiles</option>
-          <option>Electronics and Appliances</option>
-          <option>Cars</option>
-          <option>Bikes</option>
-          <option>Furniture</option>
-          <option>Pets</option>
-          <option>Books, Sports and hobbies</option>
-          <option>Fashion</option>
-          <option>Kids</option>
-          <option>Services</option>
-          <option>Real, Estate</option>
+        <select (change)="selectedCity($event.target.value)"  class="selected-city" formControlName="cityName">
+          <option value="">Chọn Tỉnh/TP</option>
+          <option *ngFor="let city of cities" [value]="city.ID">{{city.Title}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="selected-wards">
-          <option>Chọn quận/huyện</option>
-          <option>Mobiles</option>
-          <option>Electronics and Appliances</option>
-          <option>Cars</option>
-          <option>Bikes</option>
-          <option>Furniture</option>
-          <option>Pets</option>
-          <option>Books, Sports and hobbies</option>
-          <option>Fashion</option>
-          <option>Kids</option>
-          <option>Services</option>
-          <option>Real, Estate</option>
+        <select class="selected-wards" formControlName="wardName">
+          <option value="">Chọn quận/huyện</option>
+          <option *ngFor="let ward of wards" [value]="ward.ID">{{ward.Title}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="selected-wards">
-          <option>Chọn danh mục</option>
-          <option>Mobiles</option>
-          <option>Electronics and Appliances</option>
-          <option>Cars</option>
-          <option>Bikes</option>
-          <option>Furniture</option>
-          <option>Pets</option>
-          <option>Books, Sports and hobbies</option>
-          <option>Fashion</option>
-          <option>Kids</option>
-          <option>Services</option>
-          <option>Real, Estate</option>
+        <select class="selected-wards" formControlName="category">
+          <option value="">Chọn danh mục</option>
+          <option *ngFor="let category of categoriesLevel1" [value]="category._id">{{category.name}}</option>
         </select>
+      </div>
+      <div class="col-md-3 " style="position: relative;">
+        <button class="button " type="submit">
+          <span style="margin-top: 2px;" class="material-icons">
+            search
+          </span> </button>
       </div>
     </div>
   </form>
