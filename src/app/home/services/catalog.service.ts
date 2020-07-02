@@ -8,6 +8,7 @@ import { CityParents } from '../models/city-parent.model';
 import { Wards } from '../models/ward.models';
 import { Paginator } from '../models/paginator.model';
 import { ProductRequest, ProductRequestById } from '../models/product-request.model';
+import { Comments, RequestNewComment } from '../models/comment.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,18 @@ export class CatalogService {
 
   getProductByPaginator(request: Paginator): Observable<ProductItem[]> {
     return this.httpClient.post<ProductItem[]>(Constants.BASE_API_URL + 'products/pagination', request);
+  }
+
+  getAllComment(): Observable<Comments> {
+    return this.httpClient.get<Comments>(Constants.BASE_API_URL + 'comment');
+  }
+
+  getAddCommentChildren(request: String): Observable<Comments> {
+    return this.httpClient.post<Comments>(Constants.BASE_API_URL + 'commentChildren/getCommentChildren', { comment_id: request });
+  }
+
+  createComment(request: RequestNewComment): Observable<Comments> {
+    return this.httpClient.post<Comments>(Constants.BASE_API_URL + 'comment', request);
   }
 
 }

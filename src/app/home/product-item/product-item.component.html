@@ -1,4 +1,4 @@
-<div class="single-page main-grid-border" *ngIf="product else spinner">
+<div class="single-page main-grid-border" *ngIf="product&&comment.length>0 else spinner">
   <div class="container">
     <ol class="breadcrumb" style="margin-bottom: 5px;">
       <li><a href="index.html">Home</a></li>
@@ -72,6 +72,80 @@
         </div>
       </div>
       <div class="clearfix"></div>
+
+
+      <div class="rt-container">
+        <div class="col-rt-12">
+
+          <div class="content">
+            <h2>({{comment.length}}) Bình luận </h2>
+            <div id="reader" style="width: 100%;">
+              <ol>
+                <li *ngFor="let item of comment;index as i">
+                  <div class="comment_box"> <a href="#"> <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1gSZjaxStAqyNQYjvkbBRIJSAtmBfIlp7XA&usqp=CAU"
+                        alt="avatar"> </a>
+                    <div class="inside_comment">
+                      <div class="comment-meta">
+                        <div class="commentsuser">{{item.account_name}}</div>
+                        <div class="comment_date">{{item.date|date : 'dd/MM/yyyy '}}</div>
+                      </div>
+                    </div>
+                    <div class="comment-body">
+                      <p>{{item.body}}.</p>
+                    </div>
+                    <div class="reply" (click)="viewComment(item._id)"> <a>Xem bình luận</a> </div>
+                    <div class="reply" (click)="parentReply(item)"> <a>Trả lời</a> </div>
+                    <div class="arrow-down"></div>
+                  </div>
+                  <div class="comment_children" *ngIf="commentChildren">
+                    <ul class="children"
+                      *ngIf="commentChildren.items.length>0 && (commentChildren.items[0].comment_id==item._id)&&isView">
+                      <h2 style="width: 90%; margin:20px auto;" *ngIf="commentChildren.items.length>0">
+                        ({{commentChildren.items.length}})
+                        Trả lời </h2>
+                      <li *ngFor="let itemChildren of commentChildren.items">
+                        <!--Comment Box 2-->
+                        <div class="comment_box"> <a href="#"> <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1gSZjaxStAqyNQYjvkbBRIJSAtmBfIlp7XA&usqp=CAU"
+                              alt="avatar"> </a>
+                          <div class="inside_comment">
+                            <div class="comment-meta">
+                              <div class="commentsuser">{{itemChildren.account_name}}</div>
+                              <div class="comment_date">December 1, 2012 at 1:32 am</div>
+                            </div>
+                          </div>
+                          <div class="comment-body">
+                            <p> <strong>{{itemChildren.tagUserName}}</strong> {{itemChildren.body}}</p>
+                          </div>
+                          <div class="reply" (click)="childrenReply(itemChildren,item.account_name)"> <a>Trả lời</a>
+                          </div>
+                          <div class="arrow-down"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <a style="color: blue;cursor: pointer;"
+              (click)="showForm()">{{!isComment?'Bình luận của bạn về sản phẩm!':'Đóng form'}}</a>
+            <div id="respond">
+              <form id="commentForm" [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value)" method="post"
+                class="cmxform" *ngIf="isComment">
+                <div class="commentfields">
+                  <label>Nội dung: <span>*</span></label>
+                  <textarea formControlName="body" id="ccomment" class="comment-textarea required"
+                    name="comment"></textarea>
+                </div>
+                <div class="commentfields">
+                  <button class="commentbtn" type="submit">Bình luận</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
