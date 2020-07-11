@@ -28,7 +28,6 @@ export class IndexComponent implements OnInit, OnDestroy {
     this.spinner.show();
 
     this.catalogService.getCategories().subscribe(categories => {
-      console.log(categories);
       this.categoriesLevel1 = categories.items;
     });
 

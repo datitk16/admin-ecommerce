@@ -113,7 +113,7 @@ body {
 
 .product-grid__product-wrapper {
   float: left;
-  width: 220px;
+  width: 300px;
   margin: 10px 20px 10px 20px;
   /* border: 1px solid grey */
 }
@@ -203,8 +203,8 @@ display:block;
 
 
 #login-container {
-  height: 300px;
-  max-width: 220px;
+  height: 320px;
+  width: 300px;
   padding: 20px;
   border-radius: 5px;
   background: #fffffb;
@@ -233,7 +233,6 @@ display:block;
   margin-bottom: 20px;
 }
 #login-container .social {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 40px);
@@ -282,7 +281,7 @@ display:block;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #5b5f97;
+  background: #9cdbd0;
   color: white;
   width: 100%;
   position: absolute;

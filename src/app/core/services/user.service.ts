@@ -42,11 +42,10 @@ export class UserService {
   }
 
   logout(showMessage = false): void {
+    this.cookieService.deleteAll( this.cookiesUserKey );
     this._token = undefined;
     this.dialogRef.closeAll();
     this.router.navigateByUrl('/login');
-    if (showMessage) {
-      alert('please login again')
-    }
+
   }
 }

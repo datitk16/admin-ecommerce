@@ -1,14 +1,11 @@
+import { SearchProductRequest } from './../models/products.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ProductItem, Products } from '../models/products.model';
+import { ProductItem } from '../models/products.model';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Paginator } from '../models/paginator.model';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/+state/app.state';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../services/catalog.service';
 import { ProductRequest } from '../models/product-request.model';
-import { paramsRouterSelected } from '../+state/home.actions';
 
 @Component({
   selector: 'app-services',
@@ -20,9 +17,10 @@ export class ServicesComponent implements OnInit, OnDestroy {
   products: ProductItem[] = [];
   image: string;
   request = new ProductRequest();
+  loadedSpinner = false;
+  private searchProductRequest = new SearchProductRequest();
   constructor(
     private spinner: NgxSpinnerService,
-    private store: Store<AppState>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService
@@ -31,12 +29,24 @@ export class ServicesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
-      this.request.category_id = params.cateId;
-      this.catalogService.getAllProductByCategoriesLevel1(this.request).pipe(untilDestroyed(this)).subscribe(products => {
-        if (products !== undefined && products) {
+      if (params.cateId) {
+
+        this.request.category_id = params.cateId;
+        this.catalogService.getAllProductByCategoriesLevel1(this.request).pipe(untilDestroyed(this)).subscribe(products => {
           this.products = products.items;
-        }
-      });
+        });
+      }
+      if(params.keyword){
+        this.searchProductRequest.subject = params.keyword;
+        this.catalogService.searchProduct(this.searchProductRequest).subscribe(products=>{
+          this.products = products.items;
+        });
+
+      }
+      setTimeout(() => {
+        this.loadedSpinner = true;
+      }, 1000);
+
     });
 
   }

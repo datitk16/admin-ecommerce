@@ -1,4 +1,4 @@
-<div class="total-ads main-grid-border" *ngIf="products.length>0;else spinner">
+<div class="total-ads main-grid-border" *ngIf="loadedSpinner else spinner">
   <div class="container">
     <div class="select-box">
       <app-sorts></app-sorts>
@@ -35,9 +35,6 @@
           </form>
         </div>
 
-        <div class="range">
-          <h3 class="sear-head">Price range</h3>
-        </div>
         <h2 class="sear-head fer">Sản phẩm nổi bật</h2>
         <mat-card>
           <div class="row">
@@ -45,8 +42,8 @@
               <img src="../../assets/images/f1.jpg" title="ad image" alt="" />
             </div>
             <div class="col-md-6 featured-ad-right">
-              <h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-              <p>$ 450</p>
+              <h4>Đây là sản phẩm hiện tại dược nhiều người quan tâm.</h4>
+              <p>4.500.000  </p>
             </div>
           </div>
         </mat-card>
@@ -61,33 +58,16 @@
               <mat-tab label="Tất cả sản phẩm">
                 <div class="wrapper">
                   <div class="content">
-                    <!-- content here -->
                     <div class="product-grid__wrapper">
                       <div class="product-grid__product-wrapper" *ngFor="let item of products">
-                        <!-- <div  style="height:300px" class="product-grid__product">
-                          <div class="product-grid__img-wrapper" style="height: 200px; overflow: hidden;">
-                            <img [src]=item.image class="product-grid__img" />
-                          </div>
-                          <span class="product-grid__title" style="height:30px;overflow: hidden;">
-                            <p>{{item.subject}}</p>
-                          </span>
-                          <span class="product-grid__price" style="height:20px">{{item.price}}</span>
-                          <div class="product-grid__extend-wrapper" style="height:50px">
-                            <div class="product-grid__extend">
-                              <span class="product-grid__btn product-grid__add-to-cart"><i
-                                  class="fa fa-cart-arrow-down"></i> Thêm giỏ hàng</span>
-                              <span class="product-grid__btn product-grid__view" (click)="viewDetail(item._id)"><i
-                                  class="fa fa-eye"></i> Xem </span>
-                            </div>
-                          </div>
-                        </div> -->
-                        <div id="login-container">
+                        <div id="login-container" style="text-align: center">
                           <img style="width: 100%; height:150px" [src]=item.image class="product-grid__img" />
                           <div class="description">
                             <p>{{item.subject}}</p>
                           </div>
-                          <div class="social">
-                            {{item.price}}
+                          <div class="social" style="text-transform: uppercase;text-align: center;color: red;font-size: 15px;
+                          font-weight: 600;">
+                           Giá bán: {{item.price_string}}
                           </div>
                           <button (click)="viewDetail(item._id)">Xem sản phẩm</button>
                           <footer>
@@ -96,7 +76,7 @@
                               <p>1.5K</p>
                             </div>
                             <div class="projects">
-                              <p>Projects</p>
+                              <p>Lượt xem</p>
                               <p>154</p>
                             </div>
                           </footer>

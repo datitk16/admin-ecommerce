@@ -1,16 +1,43 @@
-<div class="body">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="login">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Tài khoản email</label>
-      <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp"
-        placeholder="Enter email">
+  <div id="page-wrapper" class="sign-in-wrapper">
+    <div class="graphs">
+      <div class="sign-in-form">
+        <div class="sign-in-form-top">
+          <h1>ĐĂNG NHẬP</h1>
+        </div>
+        <div class="signin">
+          <div class="signin-rit">
+            <span class="checkbox1">
+               <label class="checkbox"><input type="checkbox" name="checkbox" checked="">Quên mật khẩu ?</label>
+            </span>
+            <p><a  href="/">Lấy lại mật khẩu</a> </p>
+            <div class="clearfix"> </div>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <div class="log-input">
+            <div class="log-input-left">
+               <input type="text" class="user"  formControlName="email" value="Email của bạn" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email của bạn';}"/>
+            </div>
+            <span class="checkbox2">
+               <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
+            </span>
+            <div class="clearfix"> </div>
+          </div>
+          <div class="log-input">
+            <div class="log-input-left">
+               <input type="password" class="lock" formControlName="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email address:';}"/>
+            </div>
+            <span class="checkbox2">
+               <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
+            </span>
+            <div class="clearfix"> </div>
+          </div>
+          <input type="submit" value="Đăng nhập">
+        </form>
+        </div>
+        <div class="new_people">
+          <p>Vui lòng nhấp bên dưới để đăng ký là thành viên của chúng tôi.</p>
+          <a (click)="toCreateUser()">Tạo tài khoản mới!</a>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Mật khẩu</label>
-      <input type="text" formControlName="password" class="form-control" aria-describedby="emailHelp"
-        placeholder="Enter Password">
-    </div>
-    <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Đăng nhập</button>
-  </form>
-
-</div>
+  </div>

@@ -19,9 +19,26 @@ export class ProductItem {
   subject: string;
   type_name: string;
   ward_name: string;
+  date:string;
 }
 
 export class Products {
   @Type(() => ProductItem)
   items: Array<ProductItem>;
+}
+
+export class SearchProductRequest {
+  subject: string;
+}
+
+
+export class CreateProductRequest {
+  category_id: string;
+  category_id_2: string;
+  city_id: string;
+  ward_id: string;
+  price_string: string;
+  phone: string;
+  body: string;
+  subject: string;
 }

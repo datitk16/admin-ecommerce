@@ -3,10 +3,10 @@
   <div class="container">
     <h1>Resale đi chợ điện tử</h1>
     <p>Hãy bán những gì bạn muốn và mua bất cứ gì bạn cần</p>
-    <a href="">Đăng bán miễn phí</a>
+    <a routerLink="/post">Đăng bán miễn phí</a>
     <div class="search">
-      <input type="text" id="fname" name="firstname" placeholder="Tìm kiếm sản phẩm..">
-      <button class="button">Tìm kiếm</button>
+      <input #keyword type="text" id="fname" name="firstname" placeholder="Tìm kiếm sản phẩm..">
+      <button (click)="searchProducts(keyword.value)" class="button">Tìm kiếm</button>
     </div>
   </div>
 </div>

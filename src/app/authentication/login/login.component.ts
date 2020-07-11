@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/+state/app.state';
 import { login } from '../+state/authentication.actions';
 import { UserService } from 'src/app/core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private fb: FormBuilder,
-    private userService: UserService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +35,10 @@ export class LoginComponent implements OnInit {
       email: result.email,
       password: result.password
     }));
+  }
+
+  toCreateUser() {
+    this.router.navigateByUrl('/createUser');
   }
 
 }

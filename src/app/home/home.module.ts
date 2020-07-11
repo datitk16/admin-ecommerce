@@ -29,6 +29,7 @@ import { reducer } from './+state/home.reducer';
 import { EmptyMessageComponent } from './empty-message/empty-message.component';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from 'ng-gallery/lightbox';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
         path: 'products/detail',
         component: MainCategoriesComponent
       },
+      {
+        path: 'post',
+        component: PostComponent
+      },
     ]
   }
 ];
@@ -63,7 +68,9 @@ const routes: Routes = [
     SearchProductComponent,
     MainCategoriesComponent,
     PaginatorComponent,
-    EmptyMessageComponent],
+    EmptyMessageComponent,
+    PostComponent,
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

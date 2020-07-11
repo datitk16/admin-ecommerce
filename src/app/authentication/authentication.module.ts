@@ -10,9 +10,10 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './+state/authentication.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffect } from './+state/authentication.effects';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, CreateUserComponent],
   imports: [
     CommonModule,
     MatInputModule,

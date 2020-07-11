@@ -1,5 +1,5 @@
-import { User } from './user.model';
+import { CustomerItem } from './user.model';
 export interface Auth {
-  user: User;
+  user: CustomerItem;
   token: string;
 }

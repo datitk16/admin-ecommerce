@@ -23,13 +23,11 @@
           <div class="gallery-container">
             <gallery id="basic-test" fluid [items]="items"></gallery>
           </div>
-          <h4>Brand : <a href="#">Company name</a></h4>
-          <h4>Views : <strong>150</strong></h4>
-          <p><strong>Display </strong>: 1.5 inch HD LCD Touch Screen</p>
-          <p><strong>Summary</strong> : It is a long established fact that a reader will be distracted by the readable
-            content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-            normal distribution of letters, as opposed to using 'Content here, content here', making it look like
-            readable English.</p>
+          <h4>Tên người bán : <a href="#">{{product.account_name}}</a></h4>
+          <h4>Địa chỉ : <a href="#"></a></h4>
+          <h4>Số lượt xem : <strong>150</strong></h4>
+          <p><strong>Ngày đăng: </strong>:{{product.date}}</p>
+          <p><strong>Mô tả sản phẩm: </strong> {{product.body}}</p>
         </div>
       </div>
       <div class="col-md-5 product-details-grid">

@@ -1,4 +1,4 @@
-import { ProductItem, Products } from './../models/products.model';
+import { ProductItem, Products, SearchProductRequest, CreateProductRequest } from './../models/products.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,6 +9,8 @@ import { Wards } from '../models/ward.models';
 import { Paginator } from '../models/paginator.model';
 import { ProductRequest, ProductRequestById } from '../models/product-request.model';
 import { Comments, RequestNewComment } from '../models/comment.modal';
+import { CategoryLevel2, CategoryLevel2Request } from '../models/categoryLevel2.model';
+import { Customers, CustomerItem } from 'src/app/shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,10 @@ export class CatalogService {
 
   getCategories(): Observable<CategoriesLevel1> {
     return this.httpClient.get<CategoriesLevel1>(Constants.BASE_API_URL + 'categoriesC1');
+  }
+
+  getCategoryLevel2(request: CategoryLevel2Request): Observable<CategoryLevel2> {
+    return this.httpClient.post<CategoryLevel2>(Constants.BASE_API_URL + 'categoriesC2' + '/categoriesLevel2ByLevel1Id', request);
   }
 
   getCity(): Observable<CityParents> {
@@ -53,6 +59,18 @@ export class CatalogService {
 
   createComment(request: RequestNewComment): Observable<Comments> {
     return this.httpClient.post<Comments>(Constants.BASE_API_URL + 'comment', request);
+  }
+
+  public searchProduct(request: SearchProductRequest): Observable<Products> {
+    return this.httpClient.post<Products>(Constants.BASE_API_URL + 'products/search', request);
+  }
+
+  public createProduct(request: CreateProductRequest): Observable<Products> {
+    return this.httpClient.post<Products>(Constants.BASE_API_URL + 'products', request);
+  }
+
+  public createCustomer(request: CustomerItem): Observable<Customers> {
+    return this.httpClient.post<Customers>(Constants.BASE_API_URL + 'users', request);
   }
 
 }

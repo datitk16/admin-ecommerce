@@ -6,7 +6,7 @@ import { logout } from 'src/app/authentication/+state/authentication.actions';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { User } from 'src/app/shared/models/user.model';
+import { CustomerItem } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  account: User;
+  account: CustomerItem;
   showBox = false;
   constructor(
     private dialogMessageService: DialogMessageService,

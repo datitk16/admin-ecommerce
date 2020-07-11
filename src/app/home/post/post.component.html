@@ -1,0 +1,85 @@
+<div class="submit-ad main-grid-border">
+  <div class="container">
+    <h2 class="head">Đăng sản phẩm</h2>
+    <div class="post-ad-form">
+      <!-- <label>Chọn danh mục <span>*</span></label>
+
+      <div class="clearfix"></div>
+      <label>Ad Title <span>*</span></label>
+      <input type="text" class="phone" placeholder="">
+      <div class="clearfix"></div>
+      <label>Ad Description <span>*</span></label>
+      <textarea class="mess" placeholder="Write few lines about your product"></textarea>
+      <div class="clearfix"></div>
+      <div class="upload-ad-photos">
+        <label>Photos for your ad :</label>
+        <div class="photos-upload-view">
+          <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+          <div>
+            <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+            <div id="filedrag">or drop files here</div>
+          </div>
+          <div id="submitbutton">
+            <button type="submit">Upload Files</button>
+          </div>
+          <div id="messages">
+            <p>Status Messages</p>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <script src="js/filedrag.js"></script>
+      </div> -->
+      <form [formGroup]="postProductForm" (ngSubmit)="postProduct(postProductForm.value)">
+        <div class="personal-details">
+          <div style="widows: 100%;">
+            <label>Tỉnh/TP <span>*</span></label>
+            <select formControlName="city_id" (change)="selectedCity($event.target.value)" class="selected-city select">
+              <option value="">Chọn Tỉnh/TP</option>
+              <option *ngFor="let city of cities" [value]="city.ID">{{city.Title}}</option>
+            </select>
+          </div>
+          <div class="clearfix"></div>
+          <div style="widows: 100%;">
+            <label>Quận/Huyện <span>*</span></label>
+            <select class="select" formControlName="ward_id">
+              <option value="">Chọn quận/huyện</option>
+              <option *ngFor="let ward of wards" [value]="ward.ID">{{ward.Title}}</option>
+            </select>
+          </div>
+          <div class="clearfix"></div>
+          <div style="widows: 100%;">
+            <label>Danh mục <span>*</span></label>
+            <select formControlName="category_id" class="select">
+              <option value="">Chọn danh mục </option>
+              <option *ngFor="let category of categoriesLevel1" [value]="category._id">{{category.name}}</option>
+            </select>
+          </div>
+          <div class="clearfix"></div>
+          <div style="widows: 100%;">
+            <label>Danh mục con <span>*</span></label>
+            <select formControlName="category_id_2" class="select">
+              <option value="">Chọn danh mục con </option>
+              <option *ngFor="let category of categoryLevel2" [value]="category._id">{{category.name}}</option>
+            </select>
+          </div>
+          <div class="clearfix"></div>
+          <label>Tên sản phẩm <span>*</span></label>
+          <input formControlName="subject" type="text" class="Tên sản phẩm" placeholder="">
+          <div class="clearfix"></div>
+          <label>Số điện thoại <span>*</span></label>
+          <input formControlName="phone" type="text" class="Số điện thoại" placeholder="">
+          <div class="clearfix"></div>
+          <label>Giá bán<span>*</span></label>
+          <input type="text" formControlName="price_string" class="Giá bán" placeholder="">
+          <div class="clearfix"></div>
+          <div class="clearfix"></div>
+          <label>Mô tả sản phẩm <span>*</span></label>
+          <textarea class="mess" formControlName="body" placeholder="Mô tả sản phẩm"></textarea>
+          <input type="submit" value="Đăng bài">
+          <div class="clearfix"></div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { ProductItem } from './../models/products.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductRequestById } from '../models/product-request.model';
 import { CatalogService } from '../services/catalog.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -9,6 +9,7 @@ import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import { Lightbox } from 'ng-gallery/lightbox';
 import { CommentItem, Comments, RequestNewComment } from '../models/comment.modal';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-main-categories',
@@ -35,6 +36,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     public gallery: Gallery,
     public lightbox: Lightbox,
     private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -99,18 +102,25 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   }
 
   childrenReply(data, account_name) {
-    this.isComment = true;
-    this.commentForm.patchValue({ comment_id: data.comment_id })
-    this.commentForm.patchValue({ tagUserName: account_name });
-
+    if (this.userService.getToken) {
+      this.isComment = true;
+      this.commentForm.patchValue({ comment_id: data.comment_id })
+      this.commentForm.patchValue({ tagUserName: account_name });
+    }
+    else {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   parentReply(data) {
-    this.isComment = true;
-    this.commentForm.patchValue({ comment_id: data._id });
-
+    if (this.userService.getToken) {
+      this.isComment = true;
+      this.commentForm.patchValue({ comment_id: data._id });
+    }
+    else {
+      this.router.navigateByUrl('/login');
+    }
   }
-
 }
 
 const data = [
