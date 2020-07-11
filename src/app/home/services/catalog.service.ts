@@ -65,12 +65,23 @@ export class CatalogService {
     return this.httpClient.post<Products>(Constants.BASE_API_URL + 'products/search', request);
   }
 
-  public createProduct(request: CreateProductRequest): Observable<Products> {
-    return this.httpClient.post<Products>(Constants.BASE_API_URL + 'products', request);
+  public createProduct(request: CreateProductRequest): Observable<ProductItem> {
+    return this.httpClient.post<ProductItem>(Constants.BASE_API_URL + 'products', request);
   }
+
+  /**USER */
 
   public createCustomer(request: CustomerItem): Observable<Customers> {
     return this.httpClient.post<Customers>(Constants.BASE_API_URL + 'users', request);
   }
+
+  public getCustomerById(request: string): Observable<CustomerItem> {
+    return this.httpClient.post<CustomerItem>(Constants.BASE_API_URL + 'users/userInfo', { id: request });
+  }
+
+  public uploadImageArrProduct(id: string, imageUrl: string): Observable<CustomerItem> {
+    return this.httpClient.post<CustomerItem>(Constants.BASE_API_URL + `products/uploadImageArr/${id}`, { id, imageUrl });
+  }
+
 
 }

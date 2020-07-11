@@ -10,6 +10,7 @@ import { Lightbox } from 'ng-gallery/lightbox';
 import { CommentItem, Comments, RequestNewComment } from '../models/comment.modal';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/core/services/user.service';
+import { CustomerItem } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-main-categories',
@@ -20,7 +21,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 
   request = new ProductRequestById();
   product: ProductItem;
-  items: GalleryItem[];
+  galleryItem: GalleryItem[];
   imageData = data;
   comment: CommentItem[] = [];
   commentChildren: Comments;
@@ -28,6 +29,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   isComment = false;
   isView = false;
   commentForm: FormGroup;
+  customerItem: CustomerItem;
   requestNewComment = new RequestNewComment();
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,16 +47,27 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
       comment_id: '',
       body: '',
       tagUserName: ''
-    })
+    });
 
     this.getAllComment();
 
-    this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
+    // this.galleryItem = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
+
+
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
       this.request.product_id = params.productId;
       this.catalogService.getProductItem(this.request).pipe(untilDestroyed(this)).subscribe(product => {
-        this.product = product.items[0];
+        this.galleryItem = product.items[0].imageList.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
+
+
+
+        this.catalogService.getCustomerById(product.items[0].account_id).subscribe(customer => {
+          this.customerItem = customer;
+        });
+        setTimeout(() => {
+          this.product = product.items[0];
+        }, 1500);
       });
     });
   }
@@ -78,7 +91,6 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 
   loadCommentChildren(idParent) {
     this.catalogService.getAddCommentChildren(idParent).subscribe(commentChildren => {
-      console.log(commentChildren)
       this.commentChildren = commentChildren;
     })
   }

@@ -1,7 +1,7 @@
-<div class="single-page main-grid-border" *ngIf="product&&comment.length>0 else spinner">
+<div class="single-page main-grid-border" *ngIf="product&&comment.length>0 && customerItem else spinner">
   <div class="container">
     <ol class="breadcrumb" style="margin-bottom: 5px;">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Trang chủ</a></li>
       <li><a href="all-classifieds.html">All Ads</a></li>
       <li class="active"><a href="mobiles.html">Mobiles</a></li>
       <li class="active">Mobile Phone</li>
@@ -21,11 +21,12 @@
         <!-- //FlexSlider -->
         <div class="product-details">
           <div class="gallery-container">
-            <gallery id="basic-test" fluid [items]="items"></gallery>
+            <gallery id="basic-test" fluid [items]="galleryItem"></gallery>
           </div>
-          <h4>Tên người bán : <a href="#">{{product.account_name}}</a></h4>
+          <h4>Tên người bán : {{customerItem.fullName}}</h4>
           <h4>Địa chỉ : <a href="#"></a></h4>
           <h4>Số lượt xem : <strong>150</strong></h4>
+          <h4>Số điện thoại liên hệ : <strong></strong></h4>
           <p><strong>Ngày đăng: </strong>:{{product.date}}</p>
           <p><strong>Mô tả sản phẩm: </strong> {{product.body}}</p>
         </div>
@@ -33,18 +34,18 @@
       <div class="col-md-5 product-details-grid">
         <div class="item-price">
           <div class="product-price">
-            <p class="p-price">Price</p>
+            <p class="p-price">Giá bán</p>
             <h3 class="rate">{{product.price}}</h3>
             <div class="clearfix"></div>
           </div>
           <div class="condition">
-            <p class="p-price">Condition</p>
+            <p class="p-price">Tình trạng</p>
             <h4>Good</h4>
             <div class="clearfix"></div>
           </div>
           <div class="itemtype">
-            <p class="p-price">Item Type</p>
-            <h4>Phones</h4>
+            <p class="p-price">Loại sản phẩm</p>
+            <h4>{{product.category_name}}</h4>
             <div class="clearfix"></div>
           </div>
         </div>
@@ -76,11 +77,11 @@
         <div class="col-rt-12">
 
           <div class="content">
-            <h2>({{comment.length}}) Bình luận </h2>
+            <h2> Bình luận sản phẩm </h2>
             <div id="reader" style="width: 100%;">
               <ol>
                 <li *ngFor="let item of comment;index as i">
-                  <div class="comment_box"> <a href="#"> <img
+                  <div class="comment_box " *ngIf="item.product_id==product._id"> <a href="#"> <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1gSZjaxStAqyNQYjvkbBRIJSAtmBfIlp7XA&usqp=CAU"
                         alt="avatar"> </a>
                     <div class="inside_comment">

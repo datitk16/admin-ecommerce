@@ -1,5 +1,7 @@
 import { Type } from 'class-transformer';
 
+
+
 export class ProductItem {
   _id: string;
   image: any;
@@ -19,7 +21,11 @@ export class ProductItem {
   subject: string;
   type_name: string;
   ward_name: string;
-  date:string;
+  date: string;
+  imageList: [{
+    srcUrl: string;
+    previewUrl: string;
+  }];
 }
 
 export class Products {

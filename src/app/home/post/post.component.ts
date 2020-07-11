@@ -6,6 +6,7 @@ import { CategoryLevel2Request, CategoryLevel2 } from '../models/categoryLevel2.
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CreateProductRequest } from '../models/products.model';
 import Swal from 'sweetalert2'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -20,11 +21,13 @@ export class PostComponent implements OnInit {
   public categoriesLevel1: CategoriesLevel1Item[] = [];
   categoryLeve2Request = new CategoryLevel2Request();
   postProductForm: FormGroup;
-  createProductRequest:CreateProductRequest
+  createProductRequest: CreateProductRequest
 
   constructor(
     private catalogService: CatalogService,
     private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,26 +54,28 @@ export class PostComponent implements OnInit {
 
   }
 
-  postProduct(data){
-    this.createProductRequest=data;
-   this.catalogService.createProduct(this.createProductRequest).subscribe(x=>{
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      onOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
+  postProduct(data) {
+    this.createProductRequest = data;
+    this.catalogService.createProduct(this.createProductRequest).subscribe(product => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
 
-    Toast.fire({
-      icon: 'success',
-      title: 'Tạo mới thành công'
+      this.router.navigate(['/post/uploadImages'], { queryParams: { id: product._id }, relativeTo: this.activatedRoute },);
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Tạo mới thành công'
+      });
     })
-   })
   }
 
   selectedCategoryLevel1(id) {
@@ -86,6 +91,8 @@ export class PostComponent implements OnInit {
       this.wards = wards;
     });
   }
+
+
 
 
 }

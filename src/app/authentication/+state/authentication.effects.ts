@@ -5,6 +5,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { mergeMap, switchMap, tap, throttleTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class AuthenticationEffect {
@@ -14,11 +15,20 @@ export class AuthenticationEffect {
     mergeMap(({ email, password }) => this.userService.login(email, password)),
     switchMap(result => {
       if (result.token) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đănh nhập thành công!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.userService.setAuth(result);
         return [authenticated()];
       }
       else{
+
         return [loginFailed()];
+
       }
     })
   ));

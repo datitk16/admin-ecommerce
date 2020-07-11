@@ -1,7 +1,7 @@
 import { Type } from 'class-transformer';
 
 export class CustomerItem {
-  _id?: string;
+  _id ?: string;
   email: string;
   password: string;
   fullName: string;

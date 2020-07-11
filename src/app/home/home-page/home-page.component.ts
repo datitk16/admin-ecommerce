@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,8 @@ export class HomePageComponent implements OnInit {
       }
     }, 16);
   }
+
+
 
 
   searchProducts(keyword) {

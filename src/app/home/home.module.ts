@@ -30,6 +30,7 @@ import { EmptyMessageComponent } from './empty-message/empty-message.component';
 import { GalleryModule } from 'ng-gallery';
 import { LightboxModule } from 'ng-gallery/lightbox';
 import { PostComponent } from './post/post.component';
+import { UploadImagesComponent } from './upload-images/upload-images.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
         path: 'post',
         component: PostComponent
       },
+      {
+        path: 'post/:id',
+        component: UploadImagesComponent
+      },
     ]
   }
 ];
@@ -70,6 +75,7 @@ const routes: Routes = [
     PaginatorComponent,
     EmptyMessageComponent,
     PostComponent,
+    UploadImagesComponent,
     ],
   imports: [
     CommonModule,
