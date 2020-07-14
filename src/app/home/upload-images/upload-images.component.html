@@ -31,9 +31,11 @@
       </div> -->
       <form >
         <div class="personal-details">
+          <label>Avatar cho sản phẩm<span>*</span></label>
+          <input type="file" #selectAvatarInput  class="Link" placeholder="">
+          <div class="clearfix"></div>
           <label>Đường dẫn hình ảnh<span>*</span></label>
           <input type="text" #image  class="Link" placeholder="">
-          <div class="clearfix"></div>
           <div class="clearfix"></div>
           <input type="submit" value="Upload hình ảnh" (click)="uploadImage(image.value)">
           <div class="clearfix"></div>

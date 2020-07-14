@@ -22,7 +22,7 @@
           <div class="clearfix"></div>
           <div style="widows: 100%;">
             <label>Danh mục <span>*</span></label>
-            <select formControlName="category_id" class="select">
+            <select formControlName="category_id" class="select" (change)="selectedCategoryLevel1($event.target.value)">
               <option value="">Chọn danh mục </option>
               <option *ngFor="let category of categoriesLevel1" [value]="category._id">{{category.name}}</option>
             </select>
@@ -32,7 +32,7 @@
             <label>Danh mục con <span>*</span></label>
             <select formControlName="category_id_2" class="select">
               <option value="">Chọn danh mục con </option>
-              <option *ngFor="let category of categoryLevel2" [value]="category._id">{{category.name}}</option>
+              <option *ngFor="let category of categoryLevel2.items" [value]="category._id">{{category.name}}</option>
             </select>
           </div>
           <div class="clearfix"></div>

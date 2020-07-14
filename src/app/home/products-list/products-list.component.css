@@ -111,91 +111,6 @@ body {
   height: auto;
 }
 
-.product-grid__product-wrapper {
-  float: left;
-  width: 300px;
-  margin: 10px 20px 10px 20px;
-  /* border: 1px solid grey */
-}
-.product-grid__product {
-  cursor: pointer;
-  background: #fff;
-  border-radius: 4px;
-}
-
-
-.product-grid__img-wrapper {
-  width: 100%;
-  text-align: center;
-  height: 130px;
-}
-img{
-  width: 100%;
-}
-.product-grid__img {
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-}
-.product-grid__title {
-  margin-top: 0.875rem;
-  font-size: 1.125em;
-  color: #222;
-  overflow: hidden;
-  text-align: center;
-}
-
-.product-grid__title p{
-  padding-top: 10px;
-  font-weight: 600;
-}
-.product-grid__title:after {
-  content: "";
-  display: block;
-  bottom: 0;
-  right: 0;
-  width: 2.4em;
-  height: 1.5em;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%);
-}
-.product-grid__price {
-  color: #e91e63;
-  font-weight: bold;
-  letter-spacing: 0.4px;
-}
-
-.product-grid__extend {
-  /* display: none; */
-  width: 100%;
-}
-
-.product-grid__description {
-  font-size: 0.875em;
-  margin-top: 0.4375rem;
-  margin-bottom: 0;
-}
-.product-grid__btn {
-  font-size: 0.875em;
-  color: #777;
-  background: #eee;
-  cursor: pointer;
-  float: left;
-  width: 50%;
-}
-.product-grid__btn i.fa {
-  margin-right: 0.3125rem;
-}
-.product-grid__add-to-cart {
-  color: #fff;
-  background: #e91e63;
-}
-
-.tab-pane {
-display:block;
-}
-
-
-
 /*  */
 @import url("https://fonts.googleapis.com/css?family=Roboto|Sriracha&display=swap");
 
@@ -327,4 +242,67 @@ display:block;
 
 .breadcrumb li a{
   color: gray;
+}
+
+
+#container .list{
+  width: 100%;
+}
+#container .list li {
+  background: #F9F9F9;
+  margin-bottom: 30px;
+  padding: 20px;
+  list-style-type: none;
+    transition:0.5s all;
+-webkit-transition:0.5s all;
+-moz-transition:0.5s all;
+-o-transition:0.5s all;
+-ms-transition:0.5s all;
+box-shadow: 0 0 0.6em #ccc;
+  -webkit-box-shadow: 0 0 0.6em #ccc;
+  -o-box-shadow: 0 0 0.6em #ccc;
+  -moz-box-shadow: 0 0 0.6em #ccc;
+  -ms-box-shadow: 0 0 0.6em #ccc;
+}
+#container .list li:hover {
+background:#fff;
+  transition:0.5s all;
+-webkit-transition:0.5s all;
+-moz-transition:0.5s all;
+-o-transition:0.5s all;
+-ms-transition:0.5s all;
+}
+#container .list li img{
+float: left;
+  margin-right: 0;
+  padding-bottom: 0;
+  border: 1px solid #D1E0EE;
+  padding: 0;
+  width: 20%;
+  background-color: #fff;
+}
+#container ul.list li.alt{ background:gray; }
+#container .list li p {
+  overflow: hidden;
+  word-wrap: break-word;
+  color: #C1C1C1;
+  font-size: 13px;
+  margin-top: 15px;
+}
+#container .list li .title{
+overflow: hidden;
+  word-wrap: break-word;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+#container .list li .adprice{
+display:block;
+font-size:22px;
+display: block;
+  font-size: 22px;
+  color: #ACD3F7;
+  margin: 5px 0 0 0;
 }

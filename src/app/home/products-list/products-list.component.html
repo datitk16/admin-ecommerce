@@ -8,15 +8,15 @@
       <h3> Chọn danh mục bạn tìm</h3>
       <ul class="all-cat-list">
         <li><a href="mobiles.html">Điện thoại <span class="num-of-ads">(5,78,076)</span></a></li>
-        <li><a href="electronics-appliances.html">Điện tử & Thiết bị  <span class="num-of-ads">(3,66,495)</span></a></li>
-        <li><a href="real-estate.html">Bất động sản  <span class="num-of-ads">(45,450)</span></a></li>
-        <li><a href="furnitures.html">Đồ nội thất    <span class="num-of-ads">(1,77,145)</span></a></li>
-        <li><a href="pets.html">Thú cưng   <span class="num-of-ads">(1,81,250)</span></a></li>
-        <li><a href="books-sports-hobbies.html">Sách & Thể thao   <span class="num-of-ads">(66,822)</span></a></li>
-        <li><a href="fashion.html">Thời trang   <span class="num-of-ads">(29,156)</span></a></li>
-        <li><a href="kids.html">Trẻ em   <span class="num-of-ads">(25,699)</span></a></li>
-        <li><a href="services.html">Dịch vụ   <span class="num-of-ads">(2,15,895)</span></a></li>
-        <li><a href="cars.html">Ô tô   <span class="num-of-ads">(2,15,306)</span></a></li>
+        <li><a href="electronics-appliances.html">Điện tử & Thiết bị <span class="num-of-ads">(3,66,495)</span></a></li>
+        <li><a href="real-estate.html">Bất động sản <span class="num-of-ads">(45,450)</span></a></li>
+        <li><a href="furnitures.html">Đồ nội thất <span class="num-of-ads">(1,77,145)</span></a></li>
+        <li><a href="pets.html">Thú cưng <span class="num-of-ads">(1,81,250)</span></a></li>
+        <li><a href="books-sports-hobbies.html">Sách & Thể thao <span class="num-of-ads">(66,822)</span></a></li>
+        <li><a href="fashion.html">Thời trang <span class="num-of-ads">(29,156)</span></a></li>
+        <li><a href="kids.html">Trẻ em <span class="num-of-ads">(25,699)</span></a></li>
+        <li><a href="services.html">Dịch vụ <span class="num-of-ads">(2,15,895)</span></a></li>
+        <li><a href="cars.html">Ô tô <span class="num-of-ads">(2,15,306)</span></a></li>
       </ul>
     </div>
     <ol class="breadcrumb" style="margin-bottom: 5px;">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-6 featured-ad-right">
               <h4>Đây là sản phẩm hiện tại dược nhiều người quan tâm.</h4>
-              <p>4.500.000  </p>
+              <p>4.500.000 </p>
             </div>
           </div>
         </mat-card>
@@ -59,28 +59,35 @@
                 <div class="wrapper">
                   <div class="content">
                     <div class="product-grid__wrapper">
-                      <div class="product-grid__product-wrapper" *ngFor="let item of products">
-                        <div id="login-container" style="text-align: center">
-                          <img style="width: 100%; height:150px" [src]=item.image class="product-grid__img" />
-                          <div class="description">
-                            <p>{{item.subject}}</p>
+                      <div id="container">
+                        <div class="sort">
+                          <div class="sort-by">
+                            <label>Lọc theo giá : </label>
+                            <select>
+                              <option value="">Chọn giá</option>
+                              <option value="">Giá: Từ thấp đến cao</option>
+                              <option value="">Giá: Từ cao xuống thấp</option>
+                            </select>
                           </div>
-                          <div class="social" style="text-transform: uppercase;text-align: center;color: red;font-size: 15px;
-                          font-weight: 600;">
-                           Giá bán: {{item.price_string}}
-                          </div>
-                          <button (click)="viewDetail(item._id)">Xem sản phẩm</button>
-                          <footer>
-                            <div class="likes">
-                              <p class="like-product"> <i class='fa fa-heart'></i></p>
-                              <p>1.5K</p>
-                            </div>
-                            <div class="projects">
-                              <p>Lượt xem</p>
-                              <p>154</p>
-                            </div>
-                          </footer>
                         </div>
+                        <div class="clearfix"></div>
+                        <ul class="list">
+                          <div *ngFor="let item of products"  (click)="viewDetail(item._id)">
+                            <li>
+                              <img [src]=item.image title="" alt="" />
+                              <section class="list-left">
+                                <h5 class="title">{{item.subject}}</h5>
+                                <span class="adprice">{{item.price_string}}</span>
+                                <p class="catpath">Mobile Phones » Brand</p>
+                              </section>
+                              <section class="list-right">
+                                <span class="date">{{item.date}}</span>
+                                <span class="cityname">City name</span>
+                              </section>
+                              <div class="clearfix"></div>
+                            </li>
+                          </div>
+                        </ul>
                       </div>
                     </div>
                   </div>

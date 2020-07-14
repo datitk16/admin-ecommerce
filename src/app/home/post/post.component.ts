@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   public cities: Address[];
   public wards: Address[];
   categoryLevel2 = new CategoryLevel2();
-  public categoriesLevel1: CategoriesLevel1Item[] = [];
+  public categoriesLevel1: CategoriesLevel1Item[];
   categoryLeve2Request = new CategoryLevel2Request();
   postProductForm: FormGroup;
   createProductRequest: CreateProductRequest
