@@ -21,6 +21,9 @@ export class ProductItem {
   subject: string;
   type_name: string;
   ward_name: string;
+  ward_id: string;
+  titleCity: string;
+  titleWard: string;
   date: string;
   imageList: [{
     srcUrl: string;

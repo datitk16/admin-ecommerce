@@ -18,6 +18,8 @@ export class ServicesComponent implements OnInit, OnDestroy {
   image: string;
   request = new ProductRequest();
   loadedSpinner = false;
+  cityId: number = 4;
+  address: [];
   private searchProductRequest = new SearchProductRequest();
   constructor(
     private spinner: NgxSpinnerService,
@@ -30,25 +32,30 @@ export class ServicesComponent implements OnInit, OnDestroy {
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
       if (params.cateId) {
-
         this.request.category_id = params.cateId;
         this.catalogService.getAllProductByCategoriesLevel1(this.request).pipe(untilDestroyed(this)).subscribe(products => {
-          this.products = products.items;
+          products.items.map((value, index) => {
+            this.catalogService.getWardById(value.ward_id).subscribe(ward => {
+              if ( value.ward_id == ward.ID) {
+                value.titleCity = ward.TinhThanhTitle;
+                value.titleWard = ward.Title;
+                this.products.push(value);
+              }
+            });
+          });
         });
       }
-      if(params.keyword){
+      if (params.keyword) {
         this.searchProductRequest.subject = params.keyword;
-        this.catalogService.searchProduct(this.searchProductRequest).subscribe(products=>{
+        this.catalogService.searchProduct(this.searchProductRequest).subscribe(products => {
           this.products = products.items;
         });
-
       }
       setTimeout(() => {
         this.loadedSpinner = true;
       }, 1000);
 
     });
-
   }
 
   ngOnDestroy(): void { }
@@ -57,7 +64,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   }
 
-  viewDetail(productId) {
-    this.router.navigate(['/products/detail'], { queryParams: { productId: productId }, relativeTo: this.activatedRoute },);
+  viewDetail(productId, wardID) {
+    this.router.navigate(['/products/detail'], { queryParams: { productId, wardID }, relativeTo: this.activatedRoute },);
   }
 }

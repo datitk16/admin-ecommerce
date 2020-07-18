@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CatalogService } from 'src/app/home/services/catalog.service';
 import { CustomerItem } from 'src/app/shared/models/user.model';
-import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-create-user',
@@ -18,7 +18,8 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private catalogService: CatalogService
+    private catalogService: CatalogService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -33,14 +34,10 @@ export class CreateUserComponent implements OnInit {
   submitForm(value) {
     this.requestUser = value;
     this.catalogService.createCustomer(this.requestUser).subscribe(user => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Bạn đã đăng ký thành công vui lòng chờ xác nhận!',
-        showConfirmButton: false,
-        timer: 3000
-      });
-    })
+
+      this.router.navigate(['/createUser/uploadAvatar'], { queryParams: { id: user._id }, relativeTo: this.activatedRoute });
+    });
+
   }
 
   toHome() {

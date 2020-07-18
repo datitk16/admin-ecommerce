@@ -11,9 +11,11 @@ import { reducer } from './+state/authentication.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffect } from './+state/authentication.effects';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { UploadAvatarComponent } from './upload-avatar/upload-avatar.component';
+import { ProfileUserComponent } from './profile-user/profile-user.component';
 
 @NgModule({
-  declarations: [LoginComponent, CreateUserComponent],
+  declarations: [LoginComponent, CreateUserComponent, UploadAvatarComponent,ProfileUserComponent],
   imports: [
     CommonModule,
     MatInputModule,

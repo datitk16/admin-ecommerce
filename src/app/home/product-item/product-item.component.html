@@ -9,25 +9,22 @@
     <div class="product-desc row">
       <div class="col-md-7 product-view">
         <h2>{{product.subject}}</h2>
-        <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at 06:55
-          pm, Ad ID: 987654321</p>
+        <p> <i class="glyphicon glyphicon-map-marker"></i>{{wardName}} - {{cityName}}|
+          Thời gian: {{product.date| date:'HH:mm:ss dd-MM-yyyy '}}</p>
         <div class="flexslider">
           <ul class="slides">
 
           </ul>
         </div>
-        <!-- FlexSlider -->
-
-        <!-- //FlexSlider -->
         <div class="product-details">
           <div class="gallery-container">
             <gallery id="basic-test" fluid [items]="galleryItem"></gallery>
           </div>
           <h4>Tên người bán : {{customerItem.fullName}}</h4>
-          <h4>Địa chỉ : <a href="#"></a></h4>
+          <h4>Địa chỉ : {{wardName}} - {{cityName}}</h4>
           <h4>Số lượt xem : <strong>150</strong></h4>
-          <h4>Số điện thoại liên hệ : <strong></strong></h4>
-          <p><strong>Ngày đăng: </strong>:{{product.date}}</p>
+          <h4>Số điện thoại liên hệ : <strong>{{product.phone}}</strong></h4>
+          <p><strong>Ngày đăng: </strong>: {{product.date| date:'HH:mm:ss dd-MM-yyyy '}}</p>
           <p><strong>Mô tả sản phẩm: </strong> {{product.body}}</p>
         </div>
       </div>
@@ -35,7 +32,7 @@
         <div class="item-price">
           <div class="product-price d-flex">
             <p class="p-price">Giá bán</p>
-            <h3 >{{product.price_string}}</h3>
+            <h3>{{product.price_string}}</h3>
             <div class="clearfix"></div>
           </div>
           <div class="condition">
@@ -53,7 +50,7 @@
           <h4>Nếu bạn quan tâm đến sản phẩm này?<small> Hãy liên hệ với người bán!</small></h4>
           <p class="d-flex" style="justify-content: center;"><span class="material-icons">
               perm_phone_msg
-            </span>0977431825</p>
+            </span>{{product.phone}}</p>
         </div>
         <div class="tips">
           <h4>Lời khuyên dành cho người dùng</h4>
@@ -66,16 +63,12 @@
             <li><a href="#">Resales sẽ xử lý các thông báo về hàng giả như thế nào?</a></li>
             <li><a href="#">Nếu nghi ngờ sản phẩm là hàng giả, tôi có được trả hàng hay không?
               </a></li>
-
           </ol>
         </div>
       </div>
       <div class="clearfix"></div>
-
-
       <div class="rt-container">
         <div class="col-rt-12">
-
           <div class="content">
             <h2> Bình luận sản phẩm </h2>
             <div id="reader" style="width: 100%;">
@@ -83,11 +76,11 @@
                 <li *ngFor="let item of comment;index as i">
                   <div class="comment_box " *ngIf="item.product_id==product._id"> <a href="#"> <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1gSZjaxStAqyNQYjvkbBRIJSAtmBfIlp7XA&usqp=CAU"
-                        alt="avatar"> </a>
+                        alt="avatar"></a>
                     <div class="inside_comment">
                       <div class="comment-meta">
                         <div class="commentsuser">{{item.account_name}}</div>
-                        <div class="comment_date">{{item.date|date : 'dd/MM/yyyy '}}</div>
+                        <div class="comment_date">Thời gian: {{item.date|date:'HH:mm:ss dd-MM-yyyy '}}</div>
                       </div>
                     </div>
                     <div class="comment-body">

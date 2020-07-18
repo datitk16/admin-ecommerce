@@ -3,6 +3,8 @@ import { LoginComponent } from './authentication/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { UploadAvatarComponent } from './authentication/upload-avatar/upload-avatar.component';
+import { ProfileUserComponent } from './authentication/profile-user/profile-user.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'createUser',
     component: CreateUserComponent
+  },
+  {
+    path: 'profileUser',
+    component: ProfileUserComponent
+  },
+  {
+    path: 'createUser/uploadAvatar',
+    component: UploadAvatarComponent
   },
   {
     path: '**',

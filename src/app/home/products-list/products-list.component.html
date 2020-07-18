@@ -72,17 +72,19 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="list">
-                          <div *ngFor="let item of products"  (click)="viewDetail(item._id)">
-                            <li>
+                          <div *ngFor="let item of products" (click)="viewDetail(item._id,item.ward_id)" style="cursor: pointer;">
+                            <li class="d-flex">
                               <img [src]=item.image title="" alt="" />
                               <section class="list-left">
                                 <h5 class="title">{{item.subject}}</h5>
                                 <span class="adprice">{{item.price_string}}</span>
                                 <p class="catpath">Mobile Phones » Brand</p>
                               </section>
-                              <section class="list-right">
-                                <span class="date">{{item.date}}</span>
-                                <span class="cityname">City name</span>
+                              <section class="list-right ">
+                                <!-- <span class="date">Ngày đăng: {{item.date| date:'HH:mm:ss dd-MM-yyyy '}}</span> -->
+                                <span class="date">Ngày đăng: {{item.date| date:' dd-MM-yyyy '}}</span>
+                                <span class="cityname" style="font-size: 13px;">{{item.titleWard}} -
+                                  {{item.titleCity}}</span>
                               </section>
                               <div class="clearfix"></div>
                             </li>

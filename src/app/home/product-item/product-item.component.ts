@@ -31,6 +31,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   commentForm: FormGroup;
   customerItem: CustomerItem;
   requestNewComment = new RequestNewComment();
+  cityName: string;
+  wardName: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService,
@@ -50,18 +52,11 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     });
 
     this.getAllComment();
-
-    // this.galleryItem = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
-
-
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
       this.request.product_id = params.productId;
       this.catalogService.getProductItem(this.request).pipe(untilDestroyed(this)).subscribe(product => {
         this.galleryItem = product.items[0].imageList.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
-
-
-
         this.catalogService.getCustomerById(product.items[0].account_id).subscribe(customer => {
           this.customerItem = customer;
         });
@@ -69,6 +64,13 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
           this.product = product.items[0];
         }, 1500);
       });
+      this.catalogService.getWardById(params.wardID).subscribe(ward => {
+        this.cityName = ward.TinhThanhTitle;
+        this.wardName = ward.Title;
+        console.log(ward);
+      });
+      //ward
+
     });
   }
 

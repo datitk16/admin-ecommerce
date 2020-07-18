@@ -1,0 +1,29 @@
+<div id="page-wrapper" class="sign-in-wrapper">
+  <div class="graphs">
+    <div class="sign-up">
+      <h1>UPLOAD HÌNH ĐẠI DIỆN</h1>
+      <p class="creating">Đăng ký tài khoản để bạn có thể đăng bài, tài khoản bạn chờ quản trị xác thực trong 24h.</p>
+      <h2>Thông tin người dùng</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="sign-u">
+          <div class="sign-up1">
+            <h4>Chọn hình đại diện * :</h4>
+          </div>
+          <div class="sign-up2">
+            <input #selectAvatarInput type="file" />
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="sub_home">
+          <div class="sub_home_left">
+            <input type="submit" value="Gửi">
+          </div>
+          <div class="sub_home_right">
+            <p style="cursor: pointer;">Quay lại <a (click)="toHome()"> trang chủ</a></p>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

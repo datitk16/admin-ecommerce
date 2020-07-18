@@ -71,8 +71,8 @@ export class CatalogService {
 
   /**USER */
 
-  public createCustomer(request: CustomerItem): Observable<Customers> {
-    return this.httpClient.post<Customers>(Constants.BASE_API_URL + 'users', request);
+  public createCustomer(request: CustomerItem): Observable<CustomerItem> {
+    return this.httpClient.post<CustomerItem>(Constants.BASE_API_URL + 'users', request);
   }
 
   public getCustomerById(request: string): Observable<CustomerItem> {
@@ -82,6 +82,16 @@ export class CatalogService {
   public uploadImageArrProduct(id: string, imageUrl: string): Observable<CustomerItem> {
     return this.httpClient.post<CustomerItem>(Constants.BASE_API_URL + `products/uploadImageArr/${id}`, { id, imageUrl });
   }
+
+  public getCityById(request: string): Observable<any> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'address/getCityById', { cityID: request });
+  }
+
+  public getWardById(request: string): Observable<any> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'address/getWardById', { wardID: request });
+  }
+
+
 
 
 }

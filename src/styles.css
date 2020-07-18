@@ -2810,14 +2810,10 @@ span.adprice {
     margin: 5px 0 0 0;
 }
 #container .list li .list-left {
-    width: 60%;
     margin-left: 3%;
-    float: left;
+    width: 50%;
 }
 #container .list li .list-right{
-    width: 15%;
-    float: right;
-    text-align: right;
 }
 #container .list li .date{
 	float: right;

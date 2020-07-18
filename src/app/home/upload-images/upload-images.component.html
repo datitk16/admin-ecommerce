@@ -2,46 +2,24 @@
   <div class="container">
     <h2 class="head">Tải ảnh</h2>
     <div class="post-ad-form">
-      <!-- <label>Chọn danh mục <span>*</span></label>
-
-      <div class="clearfix"></div>
-      <label>Ad Title <span>*</span></label>
-      <input type="text" class="phone" placeholder="">
-      <div class="clearfix"></div>
-      <label>Ad Description <span>*</span></label>
-      <textarea class="mess" placeholder="Write few lines about your product"></textarea>
-      <div class="clearfix"></div>
-      <div class="upload-ad-photos">
-        <label>Photos for your ad :</label>
-        <div class="photos-upload-view">
-          <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-          <div>
-            <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-            <div id="filedrag">or drop files here</div>
-          </div>
-          <div id="submitbutton">
-            <button type="submit">Upload Files</button>
-          </div>
-          <div id="messages">
-            <p>Status Messages</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-        <script src="js/filedrag.js"></script>
-      </div> -->
-      <form >
+      <form  [formGroup]="imageForm" (ngSubmit)="onSubmit(imageForm.value)">
         <div class="personal-details">
-          <label>Avatar cho sản phẩm<span>*</span></label>
-          <input type="file" #selectAvatarInput  class="Link" placeholder="">
+          <div class="avatar" *ngIf="!inputListImage">
+            <label>Avatar cho sản phẩm<span>*</span></label>
+            <input type="file" #selectAvatarInput  class="Link" placeholder="">
+            <div class="clearfix"></div>
+          </div>
+          <div class="input-url-image" *ngIf="inputListImage">
+            <label>Đường dẫn hình ảnh<span>*</span></label>
+            <input type="text" formControlName="imageUrl"  class="Link" placeholder="">
+            <div class="clearfix"></div>
+          </div>
+          <input type="submit" value="Upload avatar" *ngIf="!inputListImage">
           <div class="clearfix"></div>
-          <label>Đường dẫn hình ảnh<span>*</span></label>
-          <input type="text" #image  class="Link" placeholder="">
-          <div class="clearfix"></div>
-          <input type="submit" value="Upload hình ảnh" (click)="uploadImage(image.value)">
+          <input type="submit" value="Upload hình ảnh" *ngIf="inputListImage" >
           <div class="clearfix"></div>
         </div>
       </form>
-
     </div>
   </div>
 </div>
