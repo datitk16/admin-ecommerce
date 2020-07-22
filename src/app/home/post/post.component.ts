@@ -40,7 +40,7 @@ export class PostComponent implements OnInit {
       date: '',
       body: '',
       phone: '',
-      price_string: '',
+      price: '',
       subject: ''
     });
 

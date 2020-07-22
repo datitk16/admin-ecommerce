@@ -590,4 +590,7 @@ border: 1px solid #127FBB;
 border: 1px solid #127FBB;
 }
 
+li a{
+  color: gray;
+}
 

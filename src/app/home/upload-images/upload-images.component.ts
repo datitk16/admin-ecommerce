@@ -33,7 +33,7 @@ export class UploadImagesComponent implements OnInit, OnDestroy {
 
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
       this.id = params.id;
-    })
+    });
   }
 
   ngOnDestroy(): void { }

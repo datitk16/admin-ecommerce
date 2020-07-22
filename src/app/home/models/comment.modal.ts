@@ -9,6 +9,7 @@ export class CommentItem {
   body: string;
   tagUserName: string;
   date: string;
+  avatar:string;
 }
 
 export class Comments {

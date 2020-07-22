@@ -11,7 +11,7 @@ export class ProductItem {
   city_name: string;
   avatar: string;
   body: string;
-  category_id: number;
+  category_id: string;
   category_name: string;
   phone: string;
   price: number;
@@ -46,7 +46,7 @@ export class CreateProductRequest {
   category_id_2: string;
   city_id: string;
   ward_id: string;
-  price_string: string;
+  price: number;
   phone: string;
   body: string;
   subject: string;

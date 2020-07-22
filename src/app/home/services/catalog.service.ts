@@ -1,4 +1,4 @@
-import { ProductItem, Products, SearchProductRequest, CreateProductRequest } from './../models/products.model';
+import { ProductItem, SearchProductRequest, CreateProductRequest, Products } from './../models/products.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -91,7 +91,17 @@ export class CatalogService {
     return this.httpClient.post<any>(Constants.BASE_API_URL + 'address/getWardById', { wardID: request });
   }
 
+  public filterProduct(city_id: string, ward_id: string, category_id: string): Observable<Products> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'products/filterProduct', { city_id, ward_id, category_id });
+  }
 
+  public sortProductLowToHight(category_id: string): Observable<Products> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'products/sortLowPriceToHightPrice', { category_id });
+  }
+
+  public sortProductHightToLow(category_id: string): Observable<Products> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'products/sortHightPriceToLowPrice', { category_id });
+  }
 
 
 }

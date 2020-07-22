@@ -11,6 +11,8 @@ import { CommentItem, Comments, RequestNewComment } from '../models/comment.moda
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/core/services/user.service';
 import { CustomerItem } from 'src/app/shared/models/user.model';
+import { HttpClient } from '@angular/common/http';
+import { CategoriesLevel1Item } from '../models/catalog-category-level1.models';
 
 @Component({
   selector: 'app-main-categories',
@@ -33,6 +35,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   requestNewComment = new RequestNewComment();
   cityName: string;
   wardName: string;
+  category_id: string;
+  categoryName: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService,
@@ -41,7 +45,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     public lightbox: Lightbox,
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -54,8 +59,17 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     this.getAllComment();
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
+
+
+
+
       this.request.product_id = params.productId;
       this.catalogService.getProductItem(this.request).pipe(untilDestroyed(this)).subscribe(product => {
+        this.category_id = product.items[0].category_id;
+        this.httpClient.post('http://localhost:6789/api/categoriesC1/getCategoryLevel1ById', { id: this.category_id }).subscribe((category: CategoriesLevel1Item) => {
+          this.categoryName = category.name;
+        });
+
         this.galleryItem = product.items[0].imageList.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
         this.catalogService.getCustomerById(product.items[0].account_id).subscribe(customer => {
           this.customerItem = customer;

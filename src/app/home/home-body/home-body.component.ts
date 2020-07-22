@@ -34,12 +34,10 @@ export class IndexComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() { }
 
-  getAllProductItem(category_id) {
-    // this.store.dispatch(loadProducts({ category_id }));
+  getAllProductItem(category_id,name) {
     this.router.navigate(['/products'], {
-      queryParams: { cateId: category_id },
+      queryParams: { cateId: category_id,name },
       relativeTo: this.activatedRoute
     });
-    // return this.router.navigateByUrl(`/all-product/${category_id}`);
   }
 }

@@ -42,6 +42,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.showBox = !this.showBox;
   }
 
+  viewProfile(){
+    this.router.navigate(['/profileUser'], { queryParams: { id: this.account._id } });
+  }
 
 
 }

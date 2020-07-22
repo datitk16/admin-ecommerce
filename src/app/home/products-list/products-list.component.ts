@@ -20,6 +20,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
   loadedSpinner = false;
   cityId: number = 4;
   address: [];
+  nameCategory: string;
   private searchProductRequest = new SearchProductRequest();
   constructor(
     private spinner: NgxSpinnerService,
@@ -29,14 +30,16 @@ export class ServicesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
+      this.nameCategory = params.name;
       if (params.cateId) {
         this.request.category_id = params.cateId;
         this.catalogService.getAllProductByCategoriesLevel1(this.request).pipe(untilDestroyed(this)).subscribe(products => {
           products.items.map((value, index) => {
             this.catalogService.getWardById(value.ward_id).subscribe(ward => {
-              if ( value.ward_id == ward.ID) {
+              if (value.ward_id == ward.ID) {
                 value.titleCity = ward.TinhThanhTitle;
                 value.titleWard = ward.Title;
                 this.products.push(value);
@@ -66,5 +69,34 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   viewDetail(productId, wardID) {
     this.router.navigate(['/products/detail'], { queryParams: { productId, wardID }, relativeTo: this.activatedRoute },);
+  }
+
+  receiveProduct(products) {
+    this.nameCategory = "Tìm kiếm";
+    this.products = []
+    products.items.map((value, index) => {
+      this.catalogService.getWardById(value.ward_id).subscribe(ward => {
+        if (value.ward_id == ward.ID) {
+          value.titleCity = ward.TinhThanhTitle;
+          value.titleWard = ward.Title;
+          this.products.push(value);
+        }
+      });
+    });
+  }
+
+  sortByPrice(value) {
+    this.products = [];
+    if (value == 1) {
+      this.catalogService.sortProductLowToHight( this.request.category_id).subscribe(products => {
+        this.products = products.items;
+      })
+    }
+    if(value==2){
+      this.catalogService.sortProductHightToLow( this.request.category_id).subscribe(products => {
+        this.products = products.items;
+      })
+    }
+
   }
 }

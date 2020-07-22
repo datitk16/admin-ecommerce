@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { Address } from '../../models/address.model';
 import { CatalogService } from '../../services/catalog.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Wards } from '../../models/ward.models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CategoriesLevel1, CategoriesLevel1Item } from '../../models/catalog-category-level1.models';
+import { Products } from '../../models/products.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sorts',
@@ -17,7 +19,7 @@ export class SortsComponent implements OnInit, OnDestroy {
   public wards: Address[];
   public selectAddressForm: FormGroup;
   public categoriesLevel1: CategoriesLevel1Item[] = [];
-
+  @Output() emitProducts = new EventEmitter<Products>();
   constructor(
     private catalogService: CatalogService,
     private fb: FormBuilder
@@ -49,7 +51,20 @@ export class SortsComponent implements OnInit, OnDestroy {
   }
 
   submitFormAddress(value) {
-    console.log(value);
+    if (value.cityName == '' || value.wardName == '' || value.category == '') {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Vui lòng nhập đầy đủ thông tin!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+    else {
+      this.catalogService.filterProduct(value.cityName, value.wardName, value.category).subscribe(product => {
+        this.emitProducts.emit(product);
+      })
+    }
   }
 
 

@@ -1,7 +1,7 @@
 <div class="total-ads main-grid-border" *ngIf="loadedSpinner else spinner">
   <div class="container">
     <div class="select-box">
-      <app-sorts></app-sorts>
+      <app-sorts (emitProducts)="receiveProduct($event)"></app-sorts>
       <div class="clearfix"></div>
     </div>
     <div class="all-categories">
@@ -20,9 +20,9 @@
       </ul>
     </div>
     <ol class="breadcrumb" style="margin-bottom: 5px;">
-      <li><a href="index.html">Home / </a></li>
-      <li><a href="categories.html"> Categories / </a></li>
-      <li class="active">Services</li>
+      <li><a >Trang chủ / </a></li>
+      <li><a [routerLink]="['/']"> Danh mục / </a></li>
+      <li class="active"><a  [routerLink]="['/']">{{nameCategory}}</a></li>
     </ol>
     <div class="ads-grid row">
       <div class="side-bar col-md-3">
@@ -63,10 +63,10 @@
                         <div class="sort">
                           <div class="sort-by">
                             <label>Lọc theo giá : </label>
-                            <select>
+                            <select (change)="sortByPrice($event.target.value)">
                               <option value="">Chọn giá</option>
-                              <option value="">Giá: Từ thấp đến cao</option>
-                              <option value="">Giá: Từ cao xuống thấp</option>
+                              <option value="1">Giá: Từ thấp đến cao</option>
+                              <option value="2">Giá: Từ cao xuống thấp</option>
                             </select>
                           </div>
                         </div>
@@ -77,11 +77,10 @@
                               <img [src]=item.image title="" alt="" />
                               <section class="list-left">
                                 <h5 class="title">{{item.subject}}</h5>
-                                <span class="adprice">{{item.price_string}}</span>
-                                <p class="catpath">Mobile Phones » Brand</p>
+                                <span class="adprice" >{{item.price}} ₫</span>
+                                <p class="catpath">Danh mục » {{nameCategory}}</p>
                               </section>
                               <section class="list-right ">
-                                <!-- <span class="date">Ngày đăng: {{item.date| date:'HH:mm:ss dd-MM-yyyy '}}</span> -->
                                 <span class="date">Ngày đăng: {{item.date| date:' dd-MM-yyyy '}}</span>
                                 <span class="cityname" style="font-size: 13px;">{{item.titleWard}} -
                                   {{item.titleCity}}</span>

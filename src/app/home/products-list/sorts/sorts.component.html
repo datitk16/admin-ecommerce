@@ -1,45 +1,26 @@
-<!-- <div class="row row-sort d-flex">
-  <div class="col-md-3">
-    <app-sort-localtion [location]="cities" (sendCity)="selectedCity($event)"></app-sort-localtion>
-  </div>
-  <div class="col-md-3">
-    <app-sort-localtion [location]="wards"></app-sort-localtion>
-  </div>
-  <div class="col-md-3">
-    <app-search-product></app-search-product>
-  </div>
-  <div class="col-md-3 d-flex">
-    <button class="button-sort">
-      <span class="material-icons">
-        search
-      </span>
-    </button>
-  </div>
-</div> -->
-
 <div class="post-ad-form">
   <form [formGroup]="selectAddressForm" (ngSubmit)="submitFormAddress(selectAddressForm.value)">
     <div class="row">
       <div class="col-md-3">
-        <select (change)="selectedCity($event.target.value)"  class="selected-city" formControlName="cityName">
+        <select (change)="selectedCity($event.target.value)"  class="selected-city" formControlName="cityName" required>
           <option value="">Chọn Tỉnh/TP</option>
           <option *ngFor="let city of cities" [value]="city.ID">{{city.Title}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="selected-wards" formControlName="wardName">
+        <select class="selected-wards" formControlName="wardName" required>
           <option value="">Chọn quận/huyện</option>
           <option *ngFor="let ward of wards" [value]="ward.ID">{{ward.Title}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="selected-wards" formControlName="category">
+        <select class="selected-wards" formControlName="category" required>
           <option value="">Chọn danh mục</option>
           <option *ngFor="let category of categoriesLevel1" [value]="category._id">{{category.name}}</option>
         </select>
       </div>
       <div class="col-md-3 " style="position: relative;">
-        <button class="button " type="submit">
+        <button class="button " type="submit" disable="true">
           <span style="margin-top: 2px;" class="material-icons">
             search
           </span> </button>
