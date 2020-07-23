@@ -69,6 +69,10 @@ export class CatalogService {
     return this.httpClient.post<ProductItem>(Constants.BASE_API_URL + 'products', request);
   }
 
+  public deleteProduct(id:string): Observable<ProductItem> {
+    return this.httpClient.post<ProductItem>(Constants.BASE_API_URL + 'products/delete', {id});
+  }
+
   /**USER */
 
   public createCustomer(request: CustomerItem): Observable<CustomerItem> {
@@ -93,6 +97,10 @@ export class CatalogService {
 
   public filterProduct(city_id: string, ward_id: string, category_id: string): Observable<Products> {
     return this.httpClient.post<any>(Constants.BASE_API_URL + 'products/filterProduct', { city_id, ward_id, category_id });
+  }
+
+  public getProductByAccountId(account_id: string): Observable<Products> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'products/getProductByAccountID', { account_id });
   }
 
   public sortProductLowToHight(category_id: string): Observable<Products> {

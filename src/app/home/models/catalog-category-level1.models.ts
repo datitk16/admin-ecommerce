@@ -14,3 +14,8 @@ export class CategoriesLevel1 {
   @Type(() => CategoriesLevel1Item)
   items: Array<CategoriesLevel1Item>;
 }
+
+export class CategoryUrl {
+  categoriesLevel1Item: CategoriesLevel1Item;
+  productNumber: number;
+}

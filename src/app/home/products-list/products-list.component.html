@@ -7,22 +7,16 @@
     <div class="all-categories">
       <h3> Chọn danh mục bạn tìm</h3>
       <ul class="all-cat-list">
-        <li><a href="mobiles.html">Điện thoại <span class="num-of-ads">(5,78,076)</span></a></li>
-        <li><a href="electronics-appliances.html">Điện tử & Thiết bị <span class="num-of-ads">(3,66,495)</span></a></li>
-        <li><a href="real-estate.html">Bất động sản <span class="num-of-ads">(45,450)</span></a></li>
-        <li><a href="furnitures.html">Đồ nội thất <span class="num-of-ads">(1,77,145)</span></a></li>
-        <li><a href="pets.html">Thú cưng <span class="num-of-ads">(1,81,250)</span></a></li>
-        <li><a href="books-sports-hobbies.html">Sách & Thể thao <span class="num-of-ads">(66,822)</span></a></li>
-        <li><a href="fashion.html">Thời trang <span class="num-of-ads">(29,156)</span></a></li>
-        <li><a href="kids.html">Trẻ em <span class="num-of-ads">(25,699)</span></a></li>
-        <li><a href="services.html">Dịch vụ <span class="num-of-ads">(2,15,895)</span></a></li>
-        <li><a href="cars.html">Ô tô <span class="num-of-ads">(2,15,306)</span></a></li>
+        <li style="cursor: pointer;" *ngFor="let item of categoryUrlArr">
+          <a (click)="navigateToCategory(item.categoriesLevel1Item._id,item.categoriesLevel1Item.name)">{{item.categoriesLevel1Item.name}}<span
+              class="num-of-ads">({{item.productNumber}})</span></a>
+        </li>
       </ul>
     </div>
     <ol class="breadcrumb" style="margin-bottom: 5px;">
-      <li><a >Trang chủ / </a></li>
+      <li><a>Trang chủ / </a></li>
       <li><a [routerLink]="['/']"> Danh mục / </a></li>
-      <li class="active"><a  [routerLink]="['/']">{{nameCategory}}</a></li>
+      <li class="active"><a [routerLink]="['/']">{{nameCategory}}</a></li>
     </ol>
     <div class="ads-grid row">
       <div class="side-bar col-md-3">
@@ -71,13 +65,14 @@
                           </div>
                         </div>
                         <div class="clearfix"></div>
-                        <ul class="list">
-                          <div *ngFor="let item of products" (click)="viewDetail(item._id,item.ward_id)" style="cursor: pointer;">
-                            <li class="d-flex">
+                        <ul class="list" >
+                          <div *ngFor="let item of products" (click)="viewDetail(item._id,item.ward_id)"
+                            style="cursor: pointer;">
+                            <li class="d-flex" *ngIf="item.authenticate">
                               <img [src]=item.image title="" alt="" />
                               <section class="list-left">
                                 <h5 class="title">{{item.subject}}</h5>
-                                <span class="adprice" >{{item.price}} ₫</span>
+                                <span class="adprice">{{item.price}} ₫</span>
                                 <p class="catpath">Danh mục » {{nameCategory}}</p>
                               </section>
                               <section class="list-right ">
