@@ -33,8 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logOut() {
-    this.dialogMessageService.confirmMessage('Bạn có muốn đăng xuất?', () => {
-      this.store.dispatch(logout({}));
+    this.dialogMessageService.showConfirmButton('Thông báo!', 'Bạn muốn thoát tài khoản?').then((result) => {
+      if (result.value) {
+        this.store.dispatch(logout({}));
+      }
     })
   }
   ngOnDestroy() { }

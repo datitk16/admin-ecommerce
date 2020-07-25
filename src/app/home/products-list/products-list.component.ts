@@ -44,15 +44,13 @@ export class ServicesComponent implements OnInit, OnDestroy {
       this.nameCategory = params.name;
       if (params.cateId) {
         this.request.category_id = params.cateId;
-
         this.catalogService.getCategories().subscribe(categories => {
           categories.items.map((value, index) => {
             const requestProduct = new ProductRequest();
             requestProduct.category_id = value._id;
             this.catalogService.getAllProductByCategoriesLevel1(requestProduct).subscribe(products => {
               this.categoryUrlArr.push({ categoriesLevel1Item: value, productNumber: products.items.length });
-            })
-
+            });
           })
         })
 

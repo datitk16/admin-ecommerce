@@ -5,6 +5,8 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 import { CustomerItem } from 'src/app/shared/models/user.model';
 import { CatalogService } from 'src/app/home/services/catalog.service';
 import { ProductItem } from 'src/app/home/models/products.model';
+import { DialogMessageService } from 'src/app/core/services/dialog-message.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-user',
@@ -19,7 +21,8 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService,
-    private router: Router
+    private router: Router,
+    private dialogMessageService: DialogMessageService,
   ) { }
 
   ngOnInit(): void {
@@ -44,9 +47,18 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
     this.router.navigate(['/products/detail'], { queryParams: { productId, wardID }, relativeTo: this.activatedRoute },);
   }
 
-  deleteProduct(id){
-    this.catalogService.deleteProduct(id).subscribe(res =>{
-      window.location.reload();
+  deleteProduct(id) {
+    this.dialogMessageService.showConfirmButton('Thông báo!', 'Bạn muốn xóa sản phẩm này').then((result) => {
+      if (result.value) {
+        this.catalogService.deleteProduct(id).subscribe(res => {
+          Swal.fire(
+            'Đã xóa!',
+            'Bạn đã xóa thành công.',
+            'success'
+          )
+          window.location.reload();
+        })
+      }
     })
   }
 

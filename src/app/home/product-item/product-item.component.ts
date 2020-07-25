@@ -13,6 +13,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { CustomerItem } from 'src/app/shared/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { CategoriesLevel1Item } from '../models/catalog-category-level1.models';
+import { DialogMessageService } from 'src/app/core/services/dialog-message.service';
 
 @Component({
   selector: 'app-main-categories',
@@ -46,7 +47,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private dialogMessageService: DialogMessageService
   ) { }
 
   ngOnInit(): void {
@@ -97,7 +99,13 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   }
 
   showForm() {
+
     this.isComment = !this.isComment;
+    if (!this.userService.getToken) {
+      this.dialogMessageService.showInfoMessage('Thông báo', 'Vui lòng đăng nhập!');
+      this.router.navigateByUrl('/login');
+    }
+
   }
 
   viewComment(id) {

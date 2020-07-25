@@ -3,7 +3,7 @@
   <div class="container">
     <h1>Resale đi chợ điện tử</h1>
     <p>Hãy bán những gì bạn muốn và mua bất cứ gì bạn cần</p>
-    <a [routerLink]=" !this.userService.getToken?'/login':'/post'">Đăng bán miễn phí</a>
+    <a (click)="postProduct()" style="cursor: pointer; color:white">Đăng bán miễn phí</a>
     <div class="search">
       <input #keyword type="text" id="fname" name="firstname" placeholder="Tìm kiếm sản phẩm..">
       <button (click)="searchProducts(keyword.value)" class="button">Tìm kiếm</button>

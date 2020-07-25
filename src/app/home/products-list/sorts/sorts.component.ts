@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CategoriesLevel1, CategoriesLevel1Item } from '../../models/catalog-category-level1.models';
 import { Products } from '../../models/products.model';
 import Swal from 'sweetalert2';
+import { DialogMessageService } from 'src/app/core/services/dialog-message.service';
 
 @Component({
   selector: 'app-sorts',
@@ -22,7 +23,8 @@ export class SortsComponent implements OnInit, OnDestroy {
   @Output() emitProducts = new EventEmitter<Products>();
   constructor(
     private catalogService: CatalogService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialogMessageService: DialogMessageService
   ) { }
 
   ngOnInit(): void {
@@ -52,13 +54,7 @@ export class SortsComponent implements OnInit, OnDestroy {
 
   submitFormAddress(value) {
     if (value.cityName == '' || value.wardName == '' || value.category == '') {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Vui lòng nhập đầy đủ thông tin!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+      this.dialogMessageService.showErrorMessage('Thông báo', 'Vui lòng điền đầy đủ thông tin');
     }
     else {
       this.catalogService.filterProduct(value.cityName, value.wardName, value.category).subscribe(product => {

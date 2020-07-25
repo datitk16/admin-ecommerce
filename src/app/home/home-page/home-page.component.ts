@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { DialogMessageService } from 'src/app/core/services/dialog-message.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public userService: UserService
+    public userService: UserService,
+    private dialogMessageService:DialogMessageService
   ) { }
 
   ngOnInit(): void {
@@ -36,5 +38,15 @@ export class HomePageComponent implements OnInit {
       queryParams: { keyword },
       relativeTo: this.activatedRoute
     });
+  }
+
+  postProduct() {
+    if (!this.userService.getToken) {
+      this.dialogMessageService.showInfoMessage('Thông báo', 'Vui lòng đăng nhập!');
+      this.router.navigateByUrl('/login');
+    }
+    else {
+      this.router.navigateByUrl('/post');
+    }
   }
 }

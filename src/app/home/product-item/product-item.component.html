@@ -32,7 +32,7 @@
         <div class="item-price">
           <div class="product-price d-flex">
             <p class="p-price">Giá bán</p>
-            <h3>{{product.price_string}}</h3>
+            <h4>{{product.price|currency:' '}}₫</h4>
             <div class="clearfix"></div>
           </div>
           <div class="condition">
@@ -121,7 +121,7 @@
               </ol>
             </div>
             <a style="color: blue;cursor: pointer;"
-              (click)="showForm()">{{!isComment?'Bình luận của bạn về sản phẩm!':'Đóng form'}}</a>
+              (click)="showForm()" >{{!isComment?'Bình luận của bạn về sản phẩm!':'Đóng form'}}</a>
             <div id="respond">
               <form id="commentForm" [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value)" method="post"
                 class="cmxform" *ngIf="isComment">

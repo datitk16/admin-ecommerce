@@ -72,7 +72,7 @@
                               <img [src]=item.image title="" alt="" />
                               <section class="list-left">
                                 <h5 class="title">{{item.subject}}</h5>
-                                <span class="adprice">{{item.price}} ₫</span>
+                                <span class="adprice">{{item.price|currency:'Giá ':'code'}} ₫</span>
                                 <p class="catpath">Danh mục » {{nameCategory}}</p>
                               </section>
                               <section class="list-right ">
