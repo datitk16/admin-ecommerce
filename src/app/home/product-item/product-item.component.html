@@ -20,7 +20,7 @@
           <div class="gallery-container">
             <gallery id="basic-test" fluid [items]="galleryItem"></gallery>
           </div>
-          <h4>Tên người bán : {{customerItem.fullName}}</h4>
+          <h4><a style="color:red;cursor: pointer;font-weight: bold;" (click)="viewUser(customerItem._id)">Tên người bán : {{customerItem.fullName}}</a></h4>
           <h4>Địa chỉ : {{wardName}} - {{cityName}}</h4>
           <h4>Số lượt xem : <strong>150</strong></h4>
           <h4>Số điện thoại liên hệ : <strong>{{product.phone}}</strong></h4>

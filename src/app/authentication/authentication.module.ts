@@ -13,6 +13,7 @@ import { AuthenticationEffect } from './+state/authentication.effects';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UploadAvatarComponent } from './upload-avatar/upload-avatar.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [LoginComponent, CreateUserComponent, UploadAvatarComponent,ProfileUserComponent],
@@ -27,7 +28,8 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     StoreModule.forRoot({}),
     StoreModule.forFeature('authState', reducer),
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AuthenticationEffect])
+    EffectsModule.forFeature([AuthenticationEffect]),
+    NgxSpinnerModule,
 
   ]
 })

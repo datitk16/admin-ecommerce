@@ -27,7 +27,13 @@ const routes: Routes = [
   },
   {
     path: 'profileUser',
-    component: ProfileUserComponent
+    component: ProfileUserComponent,
+    data: { pageTitle: 'Profile User', roleAccessProfile: true }
+  },
+  {
+    path: 'viewUser',
+    component: ProfileUserComponent,
+    data: { pageTitle: 'View User', roleAccessProfile: false }
   },
   {
     path: 'createUser/uploadAvatar',

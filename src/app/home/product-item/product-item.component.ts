@@ -61,10 +61,6 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
     this.getAllComment();
     this.spinner.show();
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
-
-
-
-
       this.request.product_id = params.productId;
       this.catalogService.getProductItem(this.request).pipe(untilDestroyed(this)).subscribe(product => {
         this.category_id = product.items[0].category_id;
@@ -75,6 +71,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
         this.galleryItem = product.items[0].imageList.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
         this.catalogService.getCustomerById(product.items[0].account_id).subscribe(customer => {
           this.customerItem = customer;
+
         });
         setTimeout(() => {
           this.product = product.items[0];
@@ -83,12 +80,15 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
       this.catalogService.getWardById(params.wardID).subscribe(ward => {
         this.cityName = ward.TinhThanhTitle;
         this.wardName = ward.Title;
-        console.log(ward);
       });
     });
   }
 
   ngOnDestroy() { }
+
+  viewUser(id) {
+    this.router.navigate(['/viewUser'], { queryParams: { id } });
+  }
 
   getAllComment() {
     this.catalogService.getAllComment().subscribe(comment => {

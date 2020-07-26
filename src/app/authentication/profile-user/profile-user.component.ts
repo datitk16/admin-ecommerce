@@ -7,6 +7,10 @@ import { CatalogService } from 'src/app/home/services/catalog.service';
 import { ProductItem } from 'src/app/home/models/products.model';
 import { DialogMessageService } from 'src/app/core/services/dialog-message.service';
 import Swal from 'sweetalert2';
+import { selectActivatedRouteData } from 'src/app/+state/app.selectors';
+import { AppState } from 'src/app/+state/app.state';
+import { Store } from '@ngrx/store';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-profile-user',
@@ -18,24 +22,46 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
   user: CustomerItem;
   products: ProductItem[] = [];
   userId: string;
+  roleAccessProfile: boolean;
   constructor(
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private catalogService: CatalogService,
     private router: Router,
     private dialogMessageService: DialogMessageService,
+    private store: Store<AppState>,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
+    this.spinner.show();
+    this.store.select(selectActivatedRouteData).pipe(untilDestroyed(this)).subscribe(data => {
+      if (data) {
+        this.roleAccessProfile = data.roleAccessProfile;
+      }
+    });
+
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
       this.userId = params.id;
       this.httpClient.post(`http://localhost:6789/api/users/getUserById/${params.id}`, null).subscribe((user: CustomerItem) => {
-        this.user = user;
+        setTimeout(() => {
+          this.user = user;
+        }, 1500)
+
       });
       this.catalogService.getProductByAccountId(params.id).subscribe(products => {
-        this.products = products.items;
+        products.items.map((value, index) => {
+          this.catalogService.getWardById(value.ward_id).subscribe(ward => {
+            if (value.ward_id == ward.ID) {
+              value.titleCity = ward.TinhThanhTitle;
+              value.titleWard = ward.Title;
+              this.products.push(value);
+            }
+          });
+        });
       });
     });
+
 
 
   }
