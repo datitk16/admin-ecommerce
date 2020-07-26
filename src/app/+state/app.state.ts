@@ -1,7 +1,8 @@
-import { AuthenticationState } from '../authentication/+state/authentication.reducer';
-import { HomeState } from '../home/+state/home.reducer';
+import { Data } from '@angular/router';
 
 export interface AppState {
-  authState: AuthenticationState;
-  catalog: HomeState;
+  activatedRouteData: Data;
+  previousUrl: string;
+  pageTitle: string;
+  inboxCount: number;
 }

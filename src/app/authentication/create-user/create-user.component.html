@@ -1,22 +1,23 @@
 <div id="page-wrapper" class="sign-in-wrapper">
   <div class="graphs">
     <div class="sign-up">
-      <h1>TẠO TÀI KHOẢN MỚI</h1>
-      <p class="creating">Đăng ký tài khoản để bạn có thể đăng bài, tài khoản bạn chờ quản trị xác thực trong 24h.</p>
+      <h1>{{pageUser?'CHỈNH SỬA THÔNG TIN':'TẠO TÀI KHOẢN MỚI'}}</h1>
+      <p class="creating" *ngIf="!pageUser">Đăng ký tài khoản để bạn có thể đăng bài, tài khoản bạn chờ quản trị xác
+        thực trong 24h.</p>
       <h2>Thông tin người dùng</h2>
-      <form [formGroup]="createUserForm" (ngSubmit)="submitForm(createUserForm.value)">
+      <form *ngIf="pageUser && user"  [formGroup]="createUserForm" (ngSubmit)="submitForm(createUserForm.value)">
         <div class="sign-u">
           <div class="sign-up1">
-            <h4>Email* :</h4>
+            <h4 >Email :</h4>
           </div>
           <div class="sign-up2">
-            <input formControlName="email" type="text" placeholder=" " required />
+            <input disabled class="email-disabled" [(ngModel)]="user.email" formControlName="email" type="text" placeholder=" " required />
           </div>
           <div class="clearfix"> </div>
         </div>
         <div class="sign-u">
           <div class="sign-up1">
-            <h4>Mật khẩu* :</h4>
+            <h4 *ngIf="pageUser">Mật khẩu Mới :</h4>
           </div>
           <div class="sign-up2">
             <input formControlName="password" type="text" placeholder=" " required />
@@ -25,7 +26,55 @@
         </div>
         <div class="sign-u">
           <div class="sign-up1">
-            <h4>Họ tên* :</h4>
+            <h4 *ngIf="pageUser">Họ tên :</h4>
+          </div>
+          <div class="sign-up2">
+            <input [(ngModel)]="user.fullName" formControlName="fullName" type="text" placeholder=" " required />
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="sign-u">
+          <div class="sign-up1">
+            <h4 *ngIf="pageUser">Số điện thoại :</h4>
+          </div>
+          <div class="sign-up2">
+            <input [(ngModel)]="user.phoneNumber" formControlName="phoneNumber" type="text" placeholder=" " required />
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="sub_home">
+          <div class="sub_home_left">
+            <input type="submit" value="Gửi">
+          </div>
+          <div class="sub_home_right">
+            <p>Quay lại <a (click)="toHome()"> trang chủ</a></p>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </form>
+
+      <form *ngIf="!pageUser" [formGroup]="createUserForm" (ngSubmit)="submitForm(createUserForm.value)">
+        <div class="sign-u">
+          <div class="sign-up1">
+            <h4 >Email<span style="color:red">*</span>:</h4>
+          </div>
+          <div class="sign-up2">
+            <input formControlName="email" type="text" placeholder=" " required />
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="sign-u">
+          <div class="sign-up1">
+            <h4 >Mật khẩu<span style="color:red">*</span> :</h4>
+          </div>
+          <div class="sign-up2">
+            <input formControlName="password" type="text" placeholder=" " required />
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="sign-u">
+          <div class="sign-up1">
+            <h4 >Họ tên<span style="color:red">*</span> :</h4>
           </div>
           <div class="sign-up2">
             <input formControlName="fullName" type="text" placeholder=" " required />
@@ -34,7 +83,7 @@
         </div>
         <div class="sign-u">
           <div class="sign-up1">
-            <h4>Số điện thoại* :</h4>
+            <h4 >Số điện thoại<span style="color:red">*</span> :</h4>
           </div>
           <div class="sign-up2">
             <input formControlName="phoneNumber" type="text" placeholder=" " required />

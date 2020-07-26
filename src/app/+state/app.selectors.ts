@@ -1,10 +1,11 @@
-import { AppState } from './app.state';
 import { createSelector } from '@ngrx/store';
-import { AuthenticationState } from '../authentication/+state/authentication.reducer';
 
-export const selectAuthState = (state: AppState) => state.authState;
+import { AppState } from './app.state';
 
-export const selectAuthenticationState = createSelector(
-  selectAuthState,
-  (state: AuthenticationState) => state
+export const appState: (state: any) => AppState = state => state.app;
+
+export const selectActivatedRouteData = createSelector(
+    appState,
+    (state: AppState) => state.activatedRouteData
 );
+

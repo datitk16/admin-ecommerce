@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CustomerItem } from 'src/app/shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UserService {
   private _token: string;
   private jwtHelper = new JwtHelperService();
   constructor(
-    private http: HttpClient,
+    private httpClient: HttpClient,
     private cookieService: CookieService,
     private dialogRef: MatDialog,
     private router: Router
@@ -34,20 +35,23 @@ export class UserService {
   }
 
   login(email: string, password: string): Observable<Auth> {
-    return this.http.post<Auth>(this.loginUrl, { email, password });
+    return this.httpClient.post<Auth>(this.loginUrl, { email, password });
   }
 
-  get getToken(){
+  get getToken() {
     return this._token ? this._token : this.getAuth().token;
   }
 
   logout(showMessage = false): void {
-    this.cookieService.deleteAll( this.cookiesUserKey );
+    this.cookieService.deleteAll(this.cookiesUserKey);
     this._token = undefined;
     this.dialogRef.closeAll();
     this.router.navigateByUrl('/login');
 
   }
 
+  public editProfileUser(password: string, fullName: string, phoneNumber: string): Observable<CustomerItem> {
+    return this.httpClient.post<any>(Constants.BASE_API_URL + 'users/updateUser', { password, fullName, phoneNumber });
+  }
 
 }

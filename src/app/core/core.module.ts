@@ -5,12 +5,17 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducer } from '../+state/app.reducer';
 @NgModule({
   declarations: [DialogMessageComponent],
   imports: [
     CommonModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forRoot({ app: reducer }),
+    EffectsModule.forRoot([]),
   ],
   entryComponents: [DialogMessageComponent],
   providers: [

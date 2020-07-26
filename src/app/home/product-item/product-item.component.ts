@@ -85,8 +85,6 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
         this.wardName = ward.Title;
         console.log(ward);
       });
-      //ward
-
     });
   }
 
@@ -102,7 +100,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 
     this.isComment = !this.isComment;
     if (!this.userService.getToken) {
-      this.dialogMessageService.showInfoMessage('Thông báo', 'Vui lòng đăng nhập!');
+      this.dialogMessageService.showInfoMessageErr('Thông báo', 'Vui lòng đăng nhập!');
       this.router.navigateByUrl('/login');
     }
 

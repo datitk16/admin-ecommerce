@@ -25,9 +25,16 @@ export class DialogMessageService implements OnDestroy {
     Swal.fire({ icon: 'error', title, text, footer })
   }
 
-  public showInfoMessage(title: string, text: string, footer?: string) {
+  public showInfoMessageErr(title: string, text: string, footer?: string) {
     Swal.fire({
       icon: 'error', title, text, footer, showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  public showInfoMessageSuccess(title: string, text: string, footer?: string) {
+    Swal.fire({
+      icon: 'success', title, text, footer, showConfirmButton: false,
       timer: 1500
     })
   }

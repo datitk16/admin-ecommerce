@@ -17,7 +17,13 @@ const routes: Routes = [
   },
   {
     path: 'createUser',
-    component: CreateUserComponent
+    component: CreateUserComponent,
+    data: { pageTitle: 'Create User', pageUpdateUser: false }
+  },
+  {
+    path: 'updateUser',
+    component: CreateUserComponent,
+    data: { pageTitle: 'Update User', pageUpdateUser: true }
   },
   {
     path: 'profileUser',

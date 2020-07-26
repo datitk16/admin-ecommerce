@@ -42,7 +42,7 @@ export class HomePageComponent implements OnInit {
 
   postProduct() {
     if (!this.userService.getToken) {
-      this.dialogMessageService.showInfoMessage('Thông báo', 'Vui lòng đăng nhập!');
+      this.dialogMessageService.showInfoMessageErr('Thông báo', 'Vui lòng đăng nhập!');
       this.router.navigateByUrl('/login');
     }
     else {

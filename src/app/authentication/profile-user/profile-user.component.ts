@@ -17,6 +17,7 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
 
   user: CustomerItem;
   products: ProductItem[] = [];
+  userId: string;
   constructor(
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
@@ -27,6 +28,7 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => {
+      this.userId = params.id;
       this.httpClient.post(`http://localhost:6789/api/users/getUserById/${params.id}`, null).subscribe((user: CustomerItem) => {
         this.user = user;
       });
@@ -55,11 +57,15 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
             'Đã xóa!',
             'Bạn đã xóa thành công.',
             'success'
-          )
+          );
           window.location.reload();
-        })
+        });
       }
     })
+  }
+
+  updateUser() {
+    this.router.navigate(['/updateUser'], { queryParams: { idUser: this.userId } });
   }
 
 }
