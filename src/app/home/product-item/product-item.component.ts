@@ -87,6 +87,9 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
   ngOnDestroy() { }
 
   viewUser(id) {
+    if (!this.userService.getToken) {
+      return this.dialogMessageService.showInfoMessageErr('Thông báo', 'Vui lòng đăng nhập!');
+    }
     this.router.navigate(['/viewUser'], { queryParams: { id } });
   }
 

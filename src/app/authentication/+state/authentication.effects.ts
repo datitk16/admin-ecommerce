@@ -25,9 +25,9 @@ export class AuthenticationEffect {
         this.userService.setAuth(result);
         return [authenticated()];
       }
-      else{
-
-        return [loginFailed()];
+      else {
+        console.log('failed')
+        // return [loginFailed()];
 
       }
     })

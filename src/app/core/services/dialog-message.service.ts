@@ -73,7 +73,6 @@ export class DialogMessageService implements OnDestroy {
     });
 
     merge(dialogRef.afterClosed()).pipe(untilDestroyed(this)).subscribe((res) => {
-      console.log(res);
       if (res) {// Click modal button
         if (res !== 'Cancel' && !isUndefined(onOkHandler)) {
           onOkHandler();

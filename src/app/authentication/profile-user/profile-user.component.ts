@@ -61,13 +61,7 @@ export class ProfileUserComponent implements OnInit, OnDestroy {
         });
       });
     });
-
-
-
   }
-
-
-
 
   ngOnDestroy(): void { }
 
